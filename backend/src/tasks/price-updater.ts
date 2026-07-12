@@ -8,6 +8,7 @@ import BitflyerApi from './price-feeds/bitflyer-api';
 import CoinbaseApi from './price-feeds/coinbase-api';
 import GeminiApi from './price-feeds/gemini-api';
 import KrakenApi from './price-feeds/kraken-api';
+import MexcApi from './price-feeds/mexc-api';
 import FreeCurrencyApi from './price-feeds/free-currency-api';
 
 export interface PriceFeed {
@@ -67,11 +68,12 @@ class PriceUpdater {
     this.latestPrices = this.getEmptyPricesObj();
     this.latestGoodPrices = this.getEmptyPricesObj();
 
-    this.feeds.push(new BitflyerApi()); // Does not have historical endpoint
-    this.feeds.push(new KrakenApi());
-    this.feeds.push(new CoinbaseApi());
-    this.feeds.push(new BitfinexApi());
-    this.feeds.push(new GeminiApi());
+    //this.feeds.push(new BitflyerApi()); // Does not have historical endpoint
+    //this.feeds.push(new KrakenApi());
+    //this.feeds.push(new CoinbaseApi());
+    //this.feeds.push(new BitfinexApi());
+    //this.feeds.push(new GeminiApi());
+    this.feeds.push(new MexcApi());
 
     this.currencyConversionFeed = new FreeCurrencyApi();
     this.setCyclePosition();
