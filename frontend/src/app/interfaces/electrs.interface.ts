@@ -103,6 +103,7 @@ export interface Vout {
   scriptpubkey_type: string;
   scriptpubkey_address?: string;
   value: number;
+  isClaim?: boolean;
   // Elements
   valuecommitment?: number;
   asset?: string;

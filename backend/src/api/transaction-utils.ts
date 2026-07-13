@@ -487,6 +487,50 @@ class TransactionUtils {
     }
   }
 
+  public detectLbryClaim(asm: string): { underlyingType: string } | null {
+    if (!asm) { return null; }
+
+    const ops = asm.split(' ');
+
+    if (ops[0] !== 'OP_NOP6' && ops[0] !== 'OP_NOP7' && ops[0] !== 'OP_NOP8') {
+      return null;
+    }
+
+    let dropIndex = -1;
+    for (let i = 1; i < ops.length; i++) {
+      if (ops[i] === 'OP_2DROP' && i + 1 < ops.length && ops[i + 1] === 'OP_DROP') {
+        dropIndex = i + 2;
+        break;
+      }
+      if (ops[i] === 'OP_DROP' && ops[i - 1] !== 'OP_2DROP') {
+        dropIndex = i + 1;
+        break;
+      }
+    }
+
+    if (dropIndex < 0 || dropIndex >= ops.length) { return null; }
+
+    const trailing = ops.slice(dropIndex).join(' ');
+
+    if (/OP_DUP OP_HASH160 OP_PUSHBYTES_20 [0-9a-f]{40} OP_EQUALVERIFY OP_CHECKSIG$/.test(trailing)) {
+      return { underlyingType: 'p2pkh' };
+    }
+    if (/OP_HASH160 OP_PUSHBYTES_20 [0-9a-f]{40} OP_EQUAL$/.test(trailing)) {
+      return { underlyingType: 'p2sh' };
+    }
+    if (/OP_0 OP_PUSHBYTES_20 [0-9a-f]{40}$/.test(trailing)) {
+      return { underlyingType: 'v0_p2wpkh' };
+    }
+    if (/OP_0 OP_PUSHBYTES_32 [0-9a-f]{64}$/.test(trailing)) {
+      return { underlyingType: 'v0_p2wsh' };
+    }
+    if (/OP_1 OP_PUSHBYTES_32 [0-9a-f]{64}$/.test(trailing)) {
+      return { underlyingType: 'v1_p2tr' };
+    }
+
+    return null;
+  }
+
 }
 
 export default new TransactionUtils();

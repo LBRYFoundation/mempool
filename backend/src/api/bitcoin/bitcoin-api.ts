@@ -305,7 +305,7 @@ class BitcoinApi implements AbstractBitcoinApi {
     };
 
     esploraTransaction.vout = transaction.vout.map((vout) => {
-      return {
+      const esploraVout: IEsploraApi.Vout = {
         value: Math.round(vout.value * COIN_TO_SUBUNIT_MULTIPLIER),
         scriptpubkey: vout.scriptPubKey.hex,
         scriptpubkey_address: vout.scriptPubKey && vout.scriptPubKey.address ? vout.scriptPubKey.address
@@ -313,6 +313,14 @@ class BitcoinApi implements AbstractBitcoinApi {
         scriptpubkey_asm: vout.scriptPubKey.asm ? transactionUtils.convertScriptSigAsm(vout.scriptPubKey.hex) : '',
         scriptpubkey_type: this.translateScriptPubKeyType(vout.scriptPubKey.type),
       };
+      if (esploraVout.scriptpubkey_type === 'nonstandard') {
+        const claimInfo = transactionUtils.detectLbryClaim(esploraVout.scriptpubkey_asm);
+        if (claimInfo) {
+          esploraVout.isClaim = true;
+          esploraVout.scriptpubkey_type = claimInfo.underlyingType;
+        }
+      }
+      return esploraVout;
     });
 
     esploraTransaction.vin = transaction.vin.map((vin) => {

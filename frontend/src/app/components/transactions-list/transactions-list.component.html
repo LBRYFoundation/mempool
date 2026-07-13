@@ -109,6 +109,7 @@
                           [address]="vin.prevout.scriptpubkey_address"
                           [similarity]="similarityMatches.get(tx.txid)?.get(vin.prevout.scriptpubkey_address)"
                         ></app-address-text>
+                        <span *ngIf="vin.prevout.isClaim" class="badge ms-1 claim-badge" i18n="transactions-list.claim">Claim</span>
                         <ng-template #vinScriptPubkeyType>
                           {{ vin.prevout.scriptpubkey_type?.toUpperCase() }}
                         </ng-template>
@@ -292,7 +293,10 @@
                         </tr>
                         <tr>
                           <td i18n="transactions-list.previous-output-type">Previous output type</td>
-                          <td style="text-align: left;">{{ vin.prevout.scriptpubkey_type?.toUpperCase() }}</td>
+                          <td style="text-align: left;">
+                            {{ vin.prevout.scriptpubkey_type?.toUpperCase() }}
+                            <span *ngIf="vin.prevout.isClaim" class="badge ms-2 claim-badge" i18n="transactions-list.claim">Claim</span>
+                          </td>
                         </tr>
                     </ng-template>
                     </tbody>
@@ -330,6 +334,7 @@
                     [address]="vout.scriptpubkey_address"
                     [similarity]="similarityMatches.get(tx.txid)?.get(vout.scriptpubkey_address)"
                   ></app-address-text>
+                  <span *ngIf="vout.isClaim" class="badge ms-1 claim-badge" i18n="transactions-list.claim">Claim</span>
                   <ng-template #pubkey_type>
                     <ng-container *ngIf="vout.scriptpubkey_type === 'p2pk'; else scriptpubkey_type">
                       P2PK <a class="address p2pk-address" [routerLink]="['/address/' | relativeUrl, vout.scriptpubkey.slice(2, -2)]" title="{{ vout.scriptpubkey.slice(2, -2) }}">
@@ -488,7 +493,10 @@
                       </tr>
                       <tr *ngIf="vout.scriptpubkey_type">
                         <td i18n="transactions-list.vout.scriptpubkey-type">Type</td>
-                        <td style="text-align: left;">{{ vout.scriptpubkey_type.toUpperCase() }}</td>
+                        <td style="text-align: left;">
+                          {{ vout.scriptpubkey_type.toUpperCase() }}
+                          <span *ngIf="vout.isClaim" class="badge ms-2 claim-badge" i18n="transactions-list.claim">Claim</span>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
