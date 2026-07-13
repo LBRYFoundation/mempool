@@ -40,7 +40,7 @@
               </a>
             </td>
             <td class="amount text-end widget">
-              <app-amount [satoshis]="utxo.amount" [noFiat]="true" [forceBtc]="true"></app-amount>
+              <app-amount [deweys]="utxo.amount" [noFiat]="true" [forceBtc]="true"></app-amount>
             </td>
             <td class="timestamp text-start widget">
               <app-time kind="since" [time]="utxo.blocktime" [showTooltip]="true"></app-time>
@@ -60,7 +60,7 @@
               </a>
             </td>
             <td class="amount text-end">
-              <app-amount [satoshis]="utxo.amount" [noFiat]="true" [forceBtc]="true"></app-amount>
+              <app-amount [deweys]="utxo.amount" [noFiat]="true" [forceBtc]="true"></app-amount>
             </td>
             <td class="pegin text-start">
               <ng-container *ngIf="utxo.pegtxid; else noPeginMessage">

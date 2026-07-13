@@ -116,7 +116,7 @@ export class FaucetComponent implements OnInit, OnDestroy {
     this.error = null;
     this.txid = '';
     this.stateService.markBlock$.next({});
-    this.servicesApiService.requestTestnet4Coins$(this.faucetForm.get('address')?.value, parseInt(this.faucetForm.get('satoshis')?.value))
+    this.servicesApiService.requestTestnet4Coins$(this.faucetForm.get('address')?.value, parseInt(this.faucetForm.get('deweys')?.value))
     .subscribe({
       next: ((response) => {
         this.txid = response.txid;
@@ -145,7 +145,7 @@ export class FaucetComponent implements OnInit, OnDestroy {
   initForm(min: number, max: number, faucetAddress: string): void {
     this.faucetForm = this.formBuilder.group({
       'address': ['', [Validators.required, Validators.pattern(getRegex('address', 'testnet4')), this.getNotFaucetAddressValidator(faucetAddress)]],
-      'satoshis': [min, [Validators.required, Validators.min(min), Validators.max(max)]]
+      'deweys': [min, [Validators.required, Validators.min(min), Validators.max(max)]]
     });
   }
 
@@ -154,10 +154,10 @@ export class FaucetComponent implements OnInit, OnDestroy {
       this.initForm(min, max, faucetAddress);
     } else {
       this.faucetForm.get('address').setValidators([Validators.required, Validators.pattern(getRegex('address', 'testnet4')), this.getNotFaucetAddressValidator(faucetAddress)]);
-      this.faucetForm.get('satoshis').setValidators([Validators.required, Validators.min(min), Validators.max(max)]);
-      this.faucetForm.get('satoshis').setValue(Math.max(min, this.faucetForm.get('satoshis').value));
-      this.faucetForm.get('satoshis').updateValueAndValidity();
-      this.faucetForm.get('satoshis').markAsDirty();
+      this.faucetForm.get('deweys').setValidators([Validators.required, Validators.min(min), Validators.max(max)]);
+      this.faucetForm.get('deweys').setValue(Math.max(min, this.faucetForm.get('deweys').value));
+      this.faucetForm.get('deweys').updateValueAndValidity();
+      this.faucetForm.get('deweys').markAsDirty();
     }
     this.loading = false;
     this.cd.markForCheck();
@@ -165,15 +165,15 @@ export class FaucetComponent implements OnInit, OnDestroy {
 
   setAmount(value: number): void {
     if (this.faucetForm) {
-      this.faucetForm.get('satoshis').setValue(value);
-      this.faucetForm.get('satoshis').updateValueAndValidity();
-      this.faucetForm.get('satoshis').markAsDirty();
+      this.faucetForm.get('deweys').setValue(value);
+      this.faucetForm.get('deweys').updateValueAndValidity();
+      this.faucetForm.get('deweys').markAsDirty();
     }
   }
 
-  get amount() { return this.faucetForm.get('satoshis')!; }
+  get amount() { return this.faucetForm.get('deweys')!; }
   get invalidAmount() {
-    const amount = this.faucetForm.get('satoshis')!;
+    const amount = this.faucetForm.get('deweys')!;
     return amount?.invalid && (amount.dirty || amount.touched);
   }
 

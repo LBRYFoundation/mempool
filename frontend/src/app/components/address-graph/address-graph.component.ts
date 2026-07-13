@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, LOCALE_ID, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+﻿import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, LOCALE_ID, NgZone, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { echarts, EChartsOption } from '@app/graphs/echarts';
 import { BehaviorSubject, Observable, Subscription, combineLatest, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -160,7 +161,7 @@ export class AddressGraphComponent implements OnChanges, OnDestroy {
     let runningTotal = total;
     const processData = summary.map(d => {
         const balance = runningTotal;
-        const fiatBalance = runningTotal * d.price / 100_000_000;
+        const fiatBalance = runningTotal * d.price / COIN_TO_SUBUNIT_MULTIPLIER;
         runningTotal -= d.value;
         return {
             time: d.time * 1000,
@@ -272,11 +273,11 @@ export class AddressGraphComponent implements OnChanges, OnDestroy {
             tooltip += `<div><b>${header}</b></div>`;
           }
 
-          const formatBTC = (val, decimal) => (val / 100_000_000).toFixed(decimal);
+          const formatBTC = (val, decimal) => (val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(decimal);
           const formatFiat = (val) => this.fiatCurrencyPipe.transform(val, null, 'USD');
 
           const btcVal = btcData.reduce((total, d) => total + d.data[2].value, 0);
-          const fiatVal = fiatData.reduce((total, d) => total + d.data[2].value * d.data[2].price / 100_000_000, 0);
+          const fiatVal = fiatData.reduce((total, d) => total + d.data[2].value * d.data[2].price / COIN_TO_SUBUNIT_MULTIPLIER, 0);
           const btcColor = btcVal === 0 ? '' : (btcVal > 0 ? 'var(--green)' : 'var(--red)');
           const fiatColor = fiatVal === 0 ? '' : (fiatVal > 0 ? 'var(--green)' : 'var(--red)');
           const btcSymbol = btcVal > 0 ? '+' : '';
@@ -326,20 +327,20 @@ export class AddressGraphComponent implements OnChanges, OnDestroy {
             color: 'rgb(110, 112, 121)',
             formatter: (val): string => {
               const valSpan = maxValue - (this.period === 'all' ? 0 : minValue);
-              if (valSpan > 100_000_000_000) {
-                return `${this.amountShortenerPipe.transform(Math.round(val / 100_000_000), 0, undefined, true)} BTC`;
+              if (valSpan > COIN_TO_SUBUNIT_MULTIPLIER_000) {
+                return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 0, undefined, true)} BTC`;
               }
               else if (valSpan > 1_000_000_000) {
-                return `${this.amountShortenerPipe.transform(Math.round(val / 100_000_000), 2, undefined, true)} BTC`;
-              } else if (valSpan > 100_000_000) {
-                return `${(val / 100_000_000).toFixed(1)} BTC`;
+                return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 2, undefined, true)} BTC`;
+              } else if (valSpan > COIN_TO_SUBUNIT_MULTIPLIER) {
+                return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(1)} BTC`;
               } else if (valSpan > 10_000_000) {
-                return `${(val / 100_000_000).toFixed(2)} BTC`;
+                return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(2)} BTC`;
               } else if (valSpan > 1_000_000) {
-                if (maxValue > 100_000_000_000) {
-                  return `${this.amountShortenerPipe.transform(Math.round(val / 100_000_000), 3, undefined, true)} BTC`;
+                if (maxValue > COIN_TO_SUBUNIT_MULTIPLIER_000) {
+                  return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 3, undefined, true)} BTC`;
                 }
-                return `${(val / 100_000_000).toFixed(3)} BTC`;
+                return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(3)} BTC`;
               } else {
                 return `${this.amountShortenerPipe.transform(val, 0, undefined, true)} sats`;
               }

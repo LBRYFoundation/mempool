@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, ViewChildren, QueryList, ChangeDetectorRef } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { Location } from '@angular/common';
 import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { ElectrsApiService } from '@app/services/electrs-api.service';
@@ -171,7 +172,7 @@ export class BlockComponent implements OnInit, OnDestroy {
               block.extras.minFee = this.getMinBlockFee(block);
               block.extras.maxFee = this.getMaxBlockFee(block);
               if (block?.extras?.reward != undefined) {
-                this.fees = block.extras.reward / 100000000 - this.blockSubsidy;
+                this.fees = block.extras.reward / COIN_TO_SUBUNIT_MULTIPLIER - this.blockSubsidy;
               }
             }
           } else if (block.height === this.block?.height) {
@@ -292,7 +293,7 @@ export class BlockComponent implements OnInit, OnDestroy {
         this.isLoadingBlock = false;
         this.setBlockSubsidy();
         if (block?.extras?.reward !== undefined) {
-          this.fees = block.extras.reward / 100000000 - this.blockSubsidy;
+          this.fees = block.extras.reward / COIN_TO_SUBUNIT_MULTIPLIER - this.blockSubsidy;
         }
         this.isLoadingOverview = true;
         this.overviewError = null;

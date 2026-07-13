@@ -12,7 +12,7 @@
           <a [routerLink]="['/lightning/node' | relativeUrl, node.public_key]">{{ node.alias }}</a>
         </td>
         <td class="capacity text-end" [class]="show">
-          <app-amount [satoshis]="node.capacity" digitsInfo="1.2-2"></app-amount>
+          <app-amount [deweys]="node.capacity" digitsInfo="1.2-2"></app-amount>
         </td>
         <td class="channels text-end" [class]="show">
           {{ node.channels | number }}

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, LOCALE_ID, NgZone, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+﻿import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, LOCALE_ID, NgZone, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { echarts, EChartsOption } from '@app/graphs/echarts';
 import { Observable, Subject, Subscription, combineLatest, fromEvent, merge, share } from 'rxjs';
 import { distinctUntilChanged, startWith, switchMap, tap } from 'rxjs/operators';
@@ -187,7 +188,7 @@ export class AccelerationFeesGraphComponent implements OnInit, OnChanges, OnDest
           for (const tick of ticks) {
             if (tick.seriesName === this.totalBidBoostLabel) {
               if (tick.data[1] > 10_000_000) {
-                tooltip += `${tick.marker} ${this.totalBidBoostLabel}: ${formatNumber(tick.data[1] / 100_000_000, this.locale, '1.0-8')} BTC<br>`;
+                tooltip += `${tick.marker} ${this.totalBidBoostLabel}: ${formatNumber(tick.data[1] / COIN_TO_SUBUNIT_MULTIPLIER, this.locale, '1.0-8')} BTC<br>`;
               } else {
                 tooltip += `${tick.marker} ${this.totalBidBoostLabel}: ${formatNumber(tick.data[1], this.locale, '1.0-0')} sats<br>`;
               }
@@ -261,7 +262,7 @@ export class AccelerationFeesGraphComponent implements OnInit, OnChanges, OnDest
             color: 'rgb(110, 112, 121)',
             formatter: (val) => {
               if (val >= 100_000) {
-                return `${(val / 100_000_000).toFixed(3)} BTC`;
+                return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(3)} BTC`;
               } else {
                 return `${val} sats`;
               }

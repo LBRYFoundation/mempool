@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { echarts, EChartsOption } from '@app/graphs/echarts';
 import { Observable } from 'rxjs';
 import { map, share, startWith, switchMap, tap } from 'rxjs/operators';
@@ -93,8 +94,8 @@ export class BlockFeesGraphComponent implements OnInit {
             .pipe(
               tap((response) => {
                 this.prepareChartOptions({
-                  blockFees: response.body.map(val => [val.timestamp * 1000, val.avgFees / 100000000, val.avgHeight]),
-                  blockFeesFiat: response.body.filter(val => val[this.currency] > 0).map(val => [val.timestamp * 1000, val.avgFees / 100000000 * val[this.currency], val.avgHeight]),
+                  blockFees: response.body.map(val => [val.timestamp * 1000, val.avgFees / COIN_TO_SUBUNIT_MULTIPLIER, val.avgHeight]),
+                  blockFeesFiat: response.body.filter(val => val[this.currency] > 0).map(val => [val.timestamp * 1000, val.avgFees / COIN_TO_SUBUNIT_MULTIPLIER * val[this.currency], val.avgHeight]),
                 });
                 this.isLoading = false;
               }),

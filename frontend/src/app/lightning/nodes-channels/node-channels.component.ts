@@ -1,4 +1,5 @@
-import { formatNumber } from '@angular/common';
+﻿import { formatNumber } from '@angular/common';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { ChangeDetectionStrategy, Component, Inject, Input, LOCALE_ID, NgZone, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { EChartsOption, TreemapSeriesOption } from '@app/graphs/echarts';
@@ -105,8 +106,8 @@ export class NodeChannels implements OnChanges {
                 return ``;
               }
               let capacity = '';
-              if (value.data.value > 100000000) {
-                capacity = formatNumber(Math.round(value.data.value / 100000000), this.locale, '1.2-2') + ' BTC';
+              if (value.data.value > COIN_TO_SUBUNIT_MULTIPLIER) {
+                capacity = formatNumber(Math.round(value.data.value / COIN_TO_SUBUNIT_MULTIPLIER), this.locale, '1.2-2') + ' BTC';
               } else {
                 capacity = <string>this.amountShortenerPipe.transform(value.data.value, 2) + ' sats';
               }

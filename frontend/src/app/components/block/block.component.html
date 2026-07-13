@@ -152,14 +152,14 @@
         <tr>
           <td i18n="block.total-fees|Total fees in a block">Total fees</td>
           <td *ngIf="network !== 'liquid' && network !== 'liquidtestnet'; else liquidTotalFees">
-            <app-amount [satoshis]="block.extras.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
+            <app-amount [deweys]="block.extras.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
             <span class="fiat">
               <app-fiat [blockConversion]="blockConversion" [value]="block.extras.totalFees" digitsInfo="1.0-0"></app-fiat>
             </span>
           </td>
           <ng-template #liquidTotalFees>
             <td>
-              <app-amount [satoshis]="fees * 100000000" digitsInfo="1.2-2" [noFiat]="true"></app-amount>&nbsp; <app-fiat
+              <app-amount [deweys]="fees * 100000000" digitsInfo="1.2-2" [noFiat]="true"></app-amount>&nbsp; <app-fiat
               [blockConversion]="blockConversion" [value]="fees * 100000000" digitsInfo="1.2-2"></app-fiat>
             </td>
           </ng-template>
@@ -167,7 +167,7 @@
         <tr *ngIf="network !== 'liquid' && network !== 'liquidtestnet'">
           <td i18n="block.subsidy-and-fees|Total subsidy and fees in a block">Subsidy + fees</td>
           <td>
-            <app-amount [satoshis]="block.extras.reward" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
+            <app-amount [deweys]="block.extras.reward" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
             <span class="fiat">
               <app-fiat [blockConversion]="blockConversion" [value]="(blockSubsidy + fees) * 100000000" digitsInfo="1.0-0"></app-fiat>
             </span>
@@ -470,7 +470,7 @@
       <tr>
         <td i18n="block.total-fees|Total fees in a block">Total fees</td>
         <td>
-          <app-amount [satoshis]="blockAudit.expectedFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
+          <app-amount [deweys]="blockAudit.expectedFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
         </td>
       </tr>
       <tr>
@@ -491,9 +491,9 @@
       <tr>
         <td i18n="block.total-fees|Total fees in a block">Total fees</td>
         <td class="text-wrap">
-          <app-amount [satoshis]="block.extras.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
+          <app-amount [deweys]="block.extras.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
           <span *ngIf="oobFees" class="oobFees" i18n-ngbTooltip="Acceleration Fees" ngbTooltip="Acceleration fees paid out-of-band">
-             <app-amount [satoshis]="oobFees" digitsInfo="1.8-8" [noFiat]="true" [addPlus]="true"></app-amount>
+             <app-amount [deweys]="oobFees" digitsInfo="1.8-8" [noFiat]="true" [addPlus]="true"></app-amount>
           </span>
           <span *ngIf="blockAudit.feeDelta" class="difference" [class.positive]="blockAudit.feeDelta <= 0" [class.negative]="blockAudit.feeDelta > 0">
             {{ blockAudit.feeDelta < 0 ? '+' : '' }}{{ (-blockAudit.feeDelta * 100) | amountShortener: 2 }}%
@@ -528,7 +528,7 @@
       <tr>
         <td i18n="block.total-fees|Total fees in a block">Total fees</td>
         <td>
-          <app-amount [satoshis]="staleStats.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
+          <app-amount [deweys]="staleStats.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
           @if (staleStats.feeDelta && (canonicalStats.feeDelta >= 100 || canonicalStats.feeDelta <= -100)) {
             <span class="difference" [class.positive]="staleStats.feeDelta > 0" [class.negative]="staleStats.feeDelta <= 0">
               {{ staleStats.feeDelta > 0 ? '+' : '' }}{{ (staleStats.feeDelta * 100) | amountShortener: 2 }}%
@@ -567,7 +567,7 @@
       <tr>
         <td i18n="block.total-fees|Total fees in a block">Total fees</td>
         <td class="text-wrap">
-          <app-amount [satoshis]="canonicalStats.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
+          <app-amount [deweys]="canonicalStats.totalFees" digitsInfo="1.2-3" [noFiat]="true"></app-amount>
           @if (canonicalStats.feeDelta && canonicalStats.feeDelta < 100 && canonicalStats.feeDelta > -100) {
             <span class="difference" [class.positive]="canonicalStats.feeDelta > 0" [class.negative]="canonicalStats.feeDelta <= 0">
               {{ canonicalStats.feeDelta > 0 ? '+' : '' }}{{ (canonicalStats.feeDelta * 100) | amountShortener: 2 }}%

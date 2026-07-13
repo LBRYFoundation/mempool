@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, LOCALE_ID, NgZone, OnChanges } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, Inject, Input, LOCALE_ID, NgZone, OnChanges } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { Router } from '@angular/router';
 import { EChartsOption, TreemapSeriesOption } from '@app/graphs/echarts';
 import { lerpColor } from '@app/shared/graphs.utils';
@@ -126,8 +127,8 @@ export class AddressesTreemap implements OnChanges {
   }
 
   formatValue(sats: number): string {
-    if (sats > 100000000) {
-      return formatNumber(sats / 100000000, this.locale, '1.2-2') + ' BTC';
+    if (sats > COIN_TO_SUBUNIT_MULTIPLIER) {
+      return formatNumber(sats / COIN_TO_SUBUNIT_MULTIPLIER, this.locale, '1.2-2') + ' BTC';
     } else {
      return this.amountShortenerPipe.transform(sats, 2) + ' sats';
     }

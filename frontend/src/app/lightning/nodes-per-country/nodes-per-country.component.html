@@ -16,7 +16,7 @@
             <tr>
               <td i18n="lightning.liquidity">Liquidity</td>
               <td>
-                <app-amount *ngIf="countryNodes.sumLiquidity > 100000000; else smallnode" [satoshis]="countryNodes.sumLiquidity" [digitsInfo]="'1.2-2'" [noFiat]="false"></app-amount>
+                <app-amount *ngIf="countryNodes.sumLiquidity > 100000000; else smallnode" [deweys]="countryNodes.sumLiquidity" [digitsInfo]="'1.2-2'" [noFiat]="false"></app-amount>
                 <ng-template #smallnode>
                   {{ countryNodes.sumLiquidity | amountShortener: 1 }}
                   <span class="sats" i18n="shared.sats">sats</span>
@@ -76,7 +76,7 @@
             <app-timestamp [customFormat]="'yyyy-MM-dd'" [unixTime]="node.updated_at"></app-timestamp>
           </td>
           <td class="capacity text-end">
-            <app-amount *ngIf="node.capacity > 100000000; else smallchannel" [satoshis]="node.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
+            <app-amount *ngIf="node.capacity > 100000000; else smallchannel" [deweys]="node.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
             <ng-template #smallchannel>
               {{ node.capacity | amountShortener: 1 }}
               <span class="sats" i18n="shared.sats">sats</span>

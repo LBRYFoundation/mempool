@@ -123,7 +123,7 @@ import { ClockchainComponent } from '@components/clockchain/clockchain.component
 import { ClockFaceComponent } from '@components/clock-face/clock-face.component';
 import { ClockComponent } from '@components/clock/clock.component';
 import { CalculatorComponent } from '@components/calculator/calculator.component';
-import { BitcoinsatoshisPipe } from '@app/shared/pipes/bitcoinsatoshis.pipe';
+import { LbryCreditsDeweysPipe } from '@app/shared/pipes/lbrycreditsdeweys.pipe';
 import { HttpErrorComponent } from '@app/shared/components/http-error/http-error.component';
 import { TwitterWidgetComponent } from '@components/twitter-widget/twitter-widget.component';
 import { SimpleProofWidgetComponent } from '@components/simpleproof-widget/simpleproof-widget.component';
@@ -236,7 +236,7 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
     GlobalFooterComponent,
     MiningPoolComponent,
     CalculatorComponent,
-    BitcoinsatoshisPipe,
+    LbryCreditsDeweysPipe,
     BlockViewComponent,
     EightBlocksComponent,
     MempoolBlockViewComponent,
@@ -404,7 +404,7 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
     TwitterLogin,
     GithubLogin,
     BitcoinInvoiceComponent,
-    BitcoinsatoshisPipe,
+    LbryCreditsDeweysPipe,
 
     MempoolBlockOverviewComponent,
     ClockchainComponent,

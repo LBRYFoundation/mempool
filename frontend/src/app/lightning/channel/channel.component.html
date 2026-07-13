@@ -53,7 +53,7 @@
             <tbody>
               <tr>
                 <td i18n="lightning.capacity">Capacity</td>
-                <td><app-sats [satoshis]="channel.capacity"></app-sats><app-fiat [value]="channel.capacity" digitsInfo="1.0-0"></app-fiat></td>
+                <td><app-sats [deweys]="channel.capacity"></app-sats><app-fiat [value]="channel.capacity" digitsInfo="1.0-0"></app-fiat></td>
               </tr>
               <tr *ngIf="channel.closed_by">
                 <td i18n="lightning.closed_by">Closed by</td>

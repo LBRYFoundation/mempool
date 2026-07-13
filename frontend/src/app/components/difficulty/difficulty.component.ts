@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, ElementRef, ViewChild, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
+﻿import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, ElementRef, ViewChild, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { StateService } from '@app/services/state.service';
@@ -244,7 +245,7 @@ function getNextBlockSubsidy(height: number): number {
     return 0;
   }
 
-  let subsidy = BigInt(50 * 100_000_000);
+  let subsidy = BigInt(50 * COIN_TO_SUBUNIT_MULTIPLIER);
   // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
   subsidy >>= BigInt(halvings);
   return Number(subsidy);

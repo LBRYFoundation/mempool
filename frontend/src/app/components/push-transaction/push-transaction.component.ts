@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ApiService } from '@app/services/api.service';
 import { StateService } from '@app/services/state.service';
@@ -120,7 +121,7 @@ export class PushTransactionComponent implements OnInit {
     try {
       const maxburnamountVal = this.submitTxsForm.get('maxburnamount')?.value;
       if (maxburnamountVal != null && maxburnamountVal !== '') {
-        maxburnamount = parseInt(maxburnamountVal) / 100_000_000;
+        maxburnamount = parseInt(maxburnamountVal) / COIN_TO_SUBUNIT_MULTIPLIER;
       }
     } catch (e) {
       this.invalidMaxburnamount = true;

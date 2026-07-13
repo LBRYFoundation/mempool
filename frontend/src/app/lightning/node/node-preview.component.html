@@ -19,7 +19,7 @@
           <tr>
             <td i18n="lightning.active-capacity">Active capacity</td>
             <td>
-              <app-amount [satoshis]="node.capacity" [noFiat]="true"></app-amount>
+              <app-amount [deweys]="node.capacity" [noFiat]="true"></app-amount>
             </td>
           </tr>
           <tr>
@@ -31,7 +31,7 @@
           <tr>
             <td i18n="lightning.avg-size">Average size</td>
             <td>
-              <app-amount [satoshis]="node.avgCapacity" [noFiat]="true"></app-amount>
+              <app-amount [deweys]="node.avgCapacity" [noFiat]="true"></app-amount>
             </td>
           </tr>
           <tr *ngIf="node.city">

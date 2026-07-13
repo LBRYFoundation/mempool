@@ -7,7 +7,7 @@
   </div>
   <div class="box-right">
     <div class="second-line"><ng-container *ngTemplateOutlet="xChannels; context: {$implicit: channel.channels }"></ng-container></div>
-    <div class="second-line"><app-amount [satoshis]="channel.capacity" digitsInfo="1.2-2" [noFiat]="true"></app-amount></div>
+    <div class="second-line"><app-amount [deweys]="channel.capacity" digitsInfo="1.2-2" [noFiat]="true"></app-amount></div>
   </div>
 </div>
 
@@ -56,13 +56,13 @@
       <tr>
         <td i18n="lightning.min-htlc">Min HTLC</td>
         <td>
-          <app-sats [valueOverride]="channel.min_htlc_mtokens === null ? '- ' : undefined" [satoshis]="channel.min_htlc_mtokens / 1000"></app-sats>
+          <app-sats [valueOverride]="channel.min_htlc_mtokens === null ? '- ' : undefined" [deweys]="channel.min_htlc_mtokens / 1000"></app-sats>
         </td>
       </tr>
       <tr>
         <td i18n="lightning.max-htlc">Max HTLC</td>
         <td>
-          <app-sats [valueOverride]="channel.max_htlc_mtokens === null ? '- ' : undefined" [satoshis]="channel.max_htlc_mtokens / 1000"></app-sats>
+          <app-sats [valueOverride]="channel.max_htlc_mtokens === null ? '- ' : undefined" [deweys]="channel.max_htlc_mtokens / 1000"></app-sats>
         </td>
       </tr>
       <tr>

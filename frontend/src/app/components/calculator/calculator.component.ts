@@ -7,9 +7,7 @@ import { ApiService } from '@app/services/api.service';
 import { Price } from '@app/services/price.service';
 import { WebsocketService } from '@app/services/websocket.service';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-
-const MAX_BTC_SUPPLY = 21000000;
-const MAX_SATOSHI_SUPPLY = MAX_BTC_SUPPLY * 100_000_000;
+import { COIN_TO_SUBUNIT_MULTIPLIER, COIN_TICKER, COIN_MAX_SUPPLY } from '@app/shared/coin.constants';
 
 @Component({
   selector: 'app-calculator',
@@ -22,7 +20,7 @@ export class CalculatorComponent implements OnInit {
   dateModel: NgbDateStruct;
   todayDateModel: NgbDateStruct;
 
-  satoshis = 10000;
+  deweys = 10000;
   form: FormGroup;
   currentPrice: number | undefined = undefined;
   isMaxSupply = false;
@@ -49,8 +47,8 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       fiat: [0],
-      bitcoin: [0],
-      satoshis: [0],
+      lbc: [0],
+      deweys: [0],
     });
 
     this.lastFiatPrice$ = this.stateService.conversions$.asObservable()
@@ -90,7 +88,7 @@ export class CalculatorComponent implements OnInit {
       this.form.get('fiat').valueChanges
     ]).subscribe(([price, value]) => {
       this.currentPrice = price;
-      const maxFiat = price * MAX_BTC_SUPPLY;
+      const maxFiat = price * COIN_MAX_SUPPLY;
       const isMaxSupply = value >= maxFiat;
       this.isMaxSupply = isMaxSupply;
       if (isMaxSupply) {
@@ -98,56 +96,56 @@ export class CalculatorComponent implements OnInit {
         this.form.get('fiat').setValue(this.formatFiat(value), { emitEvent: false });
       }
       let rate = parseFloat((value / price).toFixed(8));
-      if (rate >= MAX_BTC_SUPPLY) {
-        rate = MAX_BTC_SUPPLY;
+      if (rate >= COIN_MAX_SUPPLY) {
+        rate = COIN_MAX_SUPPLY;
       }
-      const satsRate = Math.round(rate * 100_000_000);
+      const deweysRate = Math.round(rate * COIN_TO_SUBUNIT_MULTIPLIER);
       if (isNaN(value)) {
         return;
       }
-      this.form.get('bitcoin').setValue(isMaxSupply ? MAX_BTC_SUPPLY.toString() : rate.toFixed(8), { emitEvent: false });
-      this.form.get('satoshis').setValue(satsRate, { emitEvent: false } );
+      this.form.get('lbc').setValue(isMaxSupply ? COIN_MAX_SUPPLY.toString() : rate.toFixed(8), { emitEvent: false });
+      this.form.get('deweys').setValue(deweysRate, { emitEvent: false } );
     });
 
     combineLatest([
       this.price$,
-      this.form.get('bitcoin').valueChanges
+      this.form.get('lbc').valueChanges
     ]).subscribe(([price, value]) => {
       this.currentPrice = price;
-      const isMaxSupply = parseFloat(value) >= MAX_BTC_SUPPLY;
+      const isMaxSupply = parseFloat(value) >= COIN_MAX_SUPPLY;
       this.isMaxSupply = isMaxSupply;
       const rate = parseFloat((value * price).toFixed(8));
       if (isNaN(value)) {
         return;
       }
       this.form.get('fiat').setValue(this.formatFiat(rate), { emitEvent: false } );
-      this.form.get('satoshis').setValue(Math.min(Math.round(value * 100_000_000), MAX_SATOSHI_SUPPLY), { emitEvent: false } );
+      this.form.get('deweys').setValue(Math.min(Math.round(value * COIN_TO_SUBUNIT_MULTIPLIER), COIN_MAX_SUPPLY * COIN_TO_SUBUNIT_MULTIPLIER), { emitEvent: false } );
     });
 
     combineLatest([
       this.price$,
-      this.form.get('satoshis').valueChanges
+      this.form.get('deweys').valueChanges
     ]).subscribe(([price, value]) => {
       this.currentPrice = price;
-      let bitcoinValue = value / 100_000_000;
-      const isMaxSupply = bitcoinValue >= MAX_BTC_SUPPLY;
+      let lbcValue = value / COIN_TO_SUBUNIT_MULTIPLIER;
+      const isMaxSupply = lbcValue >= COIN_MAX_SUPPLY;
       this.isMaxSupply = isMaxSupply;
       if (isMaxSupply) {
-        bitcoinValue = MAX_BTC_SUPPLY;
-        value = MAX_SATOSHI_SUPPLY;
-        this.form.get('satoshis').setValue(value, { emitEvent: false });
+        lbcValue = COIN_MAX_SUPPLY;
+        value = COIN_MAX_SUPPLY * COIN_TO_SUBUNIT_MULTIPLIER;
+        this.form.get('deweys').setValue(value, { emitEvent: false });
       }
-      const rate = parseFloat((bitcoinValue * price).toFixed(8));
-      const bitcoinRate = isMaxSupply ? MAX_BTC_SUPPLY.toString() : bitcoinValue.toFixed(8);
+      const rate = parseFloat((lbcValue * price).toFixed(8));
+      const lbcRate = isMaxSupply ? COIN_MAX_SUPPLY.toString() : lbcValue.toFixed(8);
       if (isNaN(value)) {
         return;
       }
       this.form.get('fiat').setValue(this.formatFiat(rate), { emitEvent: false } );
-      this.form.get('bitcoin').setValue(bitcoinRate, { emitEvent: false });
+      this.form.get('lbc').setValue(lbcRate, { emitEvent: false });
     });
 
-    // Default form with 1 BTC
-    this.form.get('bitcoin').setValue(1, { emitEvent: true });
+    // Default form with 1 LBC
+    this.form.get('lbc').setValue(1, { emitEvent: true });
   }
 
   transformInput(name: string): void {
@@ -160,7 +158,7 @@ export class CalculatorComponent implements OnInit {
       value = '0';
     }
     let sanitizedValue = this.removeExtraDots(value);
-    if (name === 'bitcoin' && this.countDecimals(sanitizedValue) > 8) {
+    if (name === 'lbc' && this.countDecimals(sanitizedValue) > 8) {
       sanitizedValue = this.toFixedWithoutRounding(sanitizedValue, 8);
     }
     if (name === 'fiat') {
@@ -172,14 +170,14 @@ export class CalculatorComponent implements OnInit {
     if (sanitizedValue === '') {
       sanitizedValue = '0';
     }
-    if (name === 'satoshis') {
+    if (name === 'deweys') {
       sanitizedValue = parseFloat(sanitizedValue).toFixed(0);
     }
-    if (name === 'bitcoin' && parseFloat(sanitizedValue) >= MAX_BTC_SUPPLY) {
-      sanitizedValue = MAX_BTC_SUPPLY.toString();
+    if (name === 'lbc' && parseFloat(sanitizedValue) >= COIN_MAX_SUPPLY) {
+      sanitizedValue = COIN_MAX_SUPPLY.toString();
     }
-    if (name === 'satoshis' && parseFloat(sanitizedValue) > MAX_SATOSHI_SUPPLY) {
-      sanitizedValue = MAX_SATOSHI_SUPPLY.toString();
+    if (name === 'deweys' && parseFloat(sanitizedValue) > COIN_MAX_SUPPLY * COIN_TO_SUBUNIT_MULTIPLIER) {
+      sanitizedValue = (COIN_MAX_SUPPLY * COIN_TO_SUBUNIT_MULTIPLIER).toString();
     }
     formControl.setValue(sanitizedValue, {emitEvent: true});
   }

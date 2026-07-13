@@ -9,7 +9,7 @@ import { StateService } from '@app/services/state.service';
   standalone: false,
 })
 export class SatsComponent implements OnInit {
-  @Input() satoshis: number;
+  @Input() deweys: number;
   @Input() digitsInfo = '1.0-0';
   @Input() addPlus = false;
   @Input() valueOverride: string | undefined = undefined;

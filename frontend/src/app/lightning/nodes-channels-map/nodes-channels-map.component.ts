@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter, NgZone, OnInit } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter, NgZone, OnInit } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { SeoService } from '@app/services/seo.service';
 import { ApiService } from '@app/services/api.service';
 import { delay, Observable, of, switchMap, tap, zip } from 'rxjs';
@@ -304,8 +305,8 @@ export class NodesChannelsMap implements OnInit {
             formatter: (value) => {
               const data = value.data;
               const alias = data[4].length > 0 ? data[4] : data[3].slice(0, 20);
-              const liquidity = data[5] >= 100000000 ?
-              `${this.amountShortenerPipe.transform(data[5] / 100000000)} BTC` :
+              const liquidity = data[5] >= COIN_TO_SUBUNIT_MULTIPLIER ?
+              `${this.amountShortenerPipe.transform(data[5] / COIN_TO_SUBUNIT_MULTIPLIER)} BTC` :
               `${this.amountShortenerPipe.transform(data[5], 2)} sats`;
 
               return `

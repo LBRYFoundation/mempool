@@ -1,4 +1,5 @@
-import { Component, Inject, Input, LOCALE_ID, OnInit, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
+﻿import { Component, Inject, Input, LOCALE_ID, OnInit, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { echarts, EChartsOption } from '@app/graphs/echarts';
 import { Observable, combineLatest, fromEvent } from 'rxjs';
 import { map, share, startWith, switchMap, tap } from 'rxjs/operators';
@@ -177,7 +178,7 @@ export class LightningStatisticsChartComponent implements OnInit, OnChanges {
             if (tick.seriesIndex === 0) { // Channels
               sizeString = `${tick.marker} ${tick.seriesName}: ${formatNumber(tick.data[1], this.locale, '1.0-0')}`;
             } else if (tick.seriesIndex === 1) { // Capacity
-              weightString = `${tick.marker} ${tick.seriesName}: ${formatNumber(tick.data[1] / 100000000, this.locale, '1.0-0')} BTC`;
+              weightString = `${tick.marker} ${tick.seriesName}: ${formatNumber(tick.data[1] / COIN_TO_SUBUNIT_MULTIPLIER, this.locale, '1.0-0')} BTC`;
             }
           }
 
@@ -254,9 +255,9 @@ export class LightningStatisticsChartComponent implements OnInit, OnChanges {
             color: 'rgb(110, 112, 121)',
             formatter: (val: number): string => {
               if (this.widget) {
-                return `${this.amountShortenerPipe.transform(Math.round(val / 100000000), 0)}`;
+                return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 0)}`;
               } else {
-                return `${formatNumber(Math.round(val / 100000000), this.locale, '1.0-0')}`;
+                return `${formatNumber(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), this.locale, '1.0-0')}`;
               }
             }
           },

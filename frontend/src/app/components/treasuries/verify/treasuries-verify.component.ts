@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+﻿import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { combineLatest, map, Observable, startWith, Subscription, tap } from 'rxjs';
 import { StateService } from '@app/services/state.service';
 import { WalletStats } from '../../../shared/wallet-stats';
@@ -89,7 +90,7 @@ export class TreasuriesVerifyProgressComponent implements OnInit, OnDestroy {
         for (const address of walletStats.addresses) {
           const stats = walletStats.addressStats[address];
           if (stats) {
-            const addressBalance = (stats.funded_txo_sum - stats.spent_txo_sum) / 100_000_000;
+            const addressBalance = (stats.funded_txo_sum - stats.spent_txo_sum) / COIN_TO_SUBUNIT_MULTIPLIER;
             if (treasury.verifiedAddresses?.includes(address)) {
               verifiedTotal += addressBalance;
             }

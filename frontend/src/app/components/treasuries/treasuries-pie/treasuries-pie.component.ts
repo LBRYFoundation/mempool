@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject, LOCALE_ID, Input, OnChanges, SimpleChanges, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, Inject, LOCALE_ID, Input, OnChanges, SimpleChanges, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { EChartsOption, PieSeriesOption } from '@app/graphs/echarts';
 import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
 import { StateService } from '@app/services/state.service';
@@ -165,7 +166,7 @@ export class TreasuriesPieComponent implements OnChanges {
           borderColor: '#000',
           formatter: () => {
             return `<b style="color: white">${entry.label} (${entry.share.toFixed(2)}%)</b><br>
-            ${formatNumber(entry.balance / 100_000_000, this.locale, '1.3-3')} BTC<br>`;
+            ${formatNumber(entry.balance / COIN_TO_SUBUNIT_MULTIPLIER, this.locale, '1.3-3')} BTC<br>`;
           }
         },
         data: entry.treasury,
@@ -197,7 +198,7 @@ export class TreasuriesPieComponent implements OnChanges {
           borderColor: '#000',
           formatter: () => {
             return `<b style="color: white">${otherEntry.label} (${otherEntry.share.toFixed(2)}%)</b><br>
-            ${formatNumber(otherEntry.balance / 100_000_000, this.locale, '1.3-3')} BTC<br>`;
+            ${formatNumber(otherEntry.balance / COIN_TO_SUBUNIT_MULTIPLIER, this.locale, '1.3-3')} BTC<br>`;
           }
         },
       } as PieSeriesOption);

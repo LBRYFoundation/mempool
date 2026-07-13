@@ -236,22 +236,22 @@ const defaults: IConfig = {
   },
   'CORE_RPC': {
     'HOST': '127.0.0.1',
-    'PORT': 8332,
+    'PORT': 9245,
     'USERNAME': 'mempool',
     'PASSWORD': 'mempool',
     'TIMEOUT': 60000,
     'COOKIE': false,
-    'COOKIE_PATH': '/bitcoin/.cookie',
+    'COOKIE_PATH': '/lbry/.cookie',
     'DEBUG_LOG_PATH': '',
   },
   'SECOND_CORE_RPC': {
     'HOST': '127.0.0.1',
-    'PORT': 8332,
+    'PORT': 9245,
     'USERNAME': 'mempool',
     'PASSWORD': 'mempool',
     'TIMEOUT': 60000,
     'COOKIE': false,
-    'COOKIE_PATH': '/bitcoin/.cookie'
+    'COOKIE_PATH': '/lbry/.cookie'
   },
   'DATABASE': {
     'ENABLED': true,

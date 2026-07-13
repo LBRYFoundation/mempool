@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, Output, EventEmitter, ChangeDetectorRef, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges, Output, EventEmitter, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { StateService, SignaturesMode } from '@app/services/state.service';
 import { CacheService } from '@app/services/cache.service';
 import { Observable, ReplaySubject, BehaviorSubject, merge, Subscription, of, forkJoin } from 'rxjs';
@@ -343,8 +344,8 @@ export class TransactionsListComponent implements OnInit, OnChanges, OnDestroy {
           }
         }
 
-        tx.largeInput = tx.largeInput || tx.vin.some(vin => (vin?.prevout?.value > 1000000000));
-        tx.largeOutput = tx.vout.some(vout => (vout?.value > 1000000000));
+        tx.largeInput = tx.largeInput || tx.vin.some(vin => (vin?.prevout?.value > COIN_TO_SUBUNIT_MULTIPLIER0));
+        tx.largeOutput = tx.vout.some(vout => (vout?.value > COIN_TO_SUBUNIT_MULTIPLIER0));
       });
 
       if (this.blockTime && this.transactions?.length && this.currency) {

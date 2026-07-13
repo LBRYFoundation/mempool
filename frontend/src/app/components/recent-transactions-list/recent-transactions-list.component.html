@@ -48,7 +48,7 @@
           <app-fiat [value]="transaction.value" digitsInfo="1.0-0"></app-fiat>
         </td>
         <td class="table-cell-satoshis">
-          <app-amount *ngIf="(network$ | async) !== 'liquidtestnet'; else liquidAmount" [satoshis]="transaction.value" digitsInfo="1.2-4" [noFiat]="true"></app-amount>
+          <app-amount *ngIf="(network$ | async) !== 'liquidtestnet'; else liquidAmount" [deweys]="transaction.value" digitsInfo="1.2-4" [noFiat]="true"></app-amount>
           <ng-template #liquidAmount i18n="shared.confidential">Confidential</ng-template>
         </td>
         <td class="table-cell-vsize" *ngIf="!widget" [innerHTML]="'&lrm;' + (transaction.vsize | vbytes: 2)"></td>

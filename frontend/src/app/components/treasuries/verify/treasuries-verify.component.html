@@ -43,7 +43,7 @@
           </div>
           <div class="item">
             <div class="card-text">
-              <app-amount [satoshis]="verifiedTotalBtc * 100_000_000" digitsInfo="1.0-0" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
+              <app-amount [deweys]="verifiedTotalBtc * 100_000_000" digitsInfo="1.0-0" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
             </div>
             <div class="symbol" i18n="treasuries.yet-to-be-mined">verified holdings</div>
           </div>
@@ -101,6 +101,6 @@
   </ng-container>
   <div class="tooltip-value">{{ (hoverSection.share * 100) | number: '1.2-2' }}%</div>
   <div class="tooltip-value">
-    <app-amount [satoshis]="hoverSection.btc * 100_000_000" digitsInfo="1.0-0" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
+    <app-amount [deweys]="hoverSection.btc * 100_000_000" digitsInfo="1.0-0" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
   </div>
 </div>

@@ -1,4 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+﻿import { AfterViewInit, ChangeDetectionStrategy, Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { combineLatest, EMPTY, fromEvent, interval, merge, Observable, of, Subject, Subscription, timer } from 'rxjs';
 import { catchError, delayWhen, distinctUntilChanged, filter, map, scan, share, shareReplay, startWith, switchMap, takeUntil, tap, throttleTime } from 'rxjs/operators';
 import { AuditStatus, BlockExtended, CurrentPegs, FederationAddress, FederationUtxo, OptimizedMempoolStats, RecentPeg } from '@interfaces/node-api.interface';
@@ -337,7 +338,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
           switchMap(() => this.apiService.listLiquidPegsMonth$()),
           map((pegs) => {
             const labels = pegs.map(stats => stats.date);
-            const series = pegs.map(stats => parseFloat(stats.amount) / 100000000);
+            const series = pegs.map(stats => parseFloat(stats.amount) / COIN_TO_SUBUNIT_MULTIPLIER);
             series.reduce((prev, curr, i) => series[i] = prev + curr, 0);
             return {
               series,
@@ -352,7 +353,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
         switchMap(() => this.apiService.listLiquidReservesMonth$()),
         map(reserves => {
           const labels = reserves.map(stats => stats.date);
-          const series = reserves.map(stats => parseFloat(stats.amount) / 100000000);
+          const series = reserves.map(stats => parseFloat(stats.amount) / COIN_TO_SUBUNIT_MULTIPLIER);
           return {
             series,
             labels
@@ -364,12 +365,12 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
       this.fullHistory$ = combineLatest([this.liquidPegsMonth$, this.currentPeg$, this.liquidReservesMonth$, this.currentReserves$])
         .pipe(
           map(([liquidPegs, currentPeg, liquidReserves, currentReserves]) => {
-            liquidPegs.series[liquidPegs.series.length - 1] = parseFloat(currentPeg.amount) / 100000000;
+            liquidPegs.series[liquidPegs.series.length - 1] = parseFloat(currentPeg.amount) / COIN_TO_SUBUNIT_MULTIPLIER;
 
             if (liquidPegs.series.length === liquidReserves?.series.length) {
-              liquidReserves.series[liquidReserves.series.length - 1] = parseFloat(currentReserves?.amount) / 100000000;
+              liquidReserves.series[liquidReserves.series.length - 1] = parseFloat(currentReserves?.amount) / COIN_TO_SUBUNIT_MULTIPLIER;
             } else if (liquidPegs.series.length === liquidReserves?.series.length + 1) {
-              liquidReserves.series.push(parseFloat(currentReserves?.amount) / 100000000);
+              liquidReserves.series.push(parseFloat(currentReserves?.amount) / COIN_TO_SUBUNIT_MULTIPLIER);
               liquidReserves.labels.push(liquidPegs.labels[liquidPegs.labels.length - 1]);
             } else {
               liquidReserves = {

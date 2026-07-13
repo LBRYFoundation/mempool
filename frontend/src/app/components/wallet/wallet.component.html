@@ -38,7 +38,7 @@
               <ng-container *ngIf="(walletStats$ | async) as walletStats">
                 <tr>
                   <td i18n="address.confirmed-balance">Confirmed balance</td>
-                  <td class="wrap-cell"><app-amount [satoshis]="walletStats.balance" [noFiat]="true"></app-amount> <span class="fiat"><app-fiat [value]="walletStats.balance"></app-fiat></span></td>
+                  <td class="wrap-cell"><app-amount [deweys]="walletStats.balance" [noFiat]="true"></app-amount> <span class="fiat"><app-fiat [value]="walletStats.balance"></app-fiat></span></td>
                 </tr>
                 <tr>
                   <td i18n="address.confirmed-utxos">Confirmed UTXOs</td>
@@ -46,7 +46,7 @@
                 </tr>
                 <tr>
                   <td i18n="address.total-received">Total received</td>
-                  <td class="wrap-cell"><app-amount [satoshis]="walletStats.totalReceived"></app-amount></td>
+                  <td class="wrap-cell"><app-amount [deweys]="walletStats.totalReceived"></app-amount></td>
                 </tr>
               </ng-container>
             </tbody>

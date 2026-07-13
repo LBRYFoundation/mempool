@@ -25,7 +25,7 @@
           </tr>
           <tr>
             <td i18n="lightning.capacity">Capacity</td>
-            <td><app-amount [satoshis]="channel.capacity" [noFiat]="true"></app-amount></td>
+            <td><app-amount [deweys]="channel.capacity" [noFiat]="true"></app-amount></td>
           </tr>
           <tr>
             <td i18n="transaction.fee-rate|Transaction fee rate">Fee rate</td>
@@ -41,9 +41,9 @@
             <td i18n="channel.base-fee">Base fee</td>
             <td>
               <div class="dual-cell">
-                <app-sats [satoshis]="channel.node_left.base_fee_mtokens / 1000" digitsInfo="1.0-2"></app-sats>
+                <app-sats [deweys]="channel.node_left.base_fee_mtokens / 1000" digitsInfo="1.0-2"></app-sats>
                 <fa-icon class="between-arrow" [icon]="['fas', 'arrow-right-arrow-left']" [fixedWidth]="true"></fa-icon>
-                <app-sats [satoshis]="channel.node_right.base_fee_mtokens / 1000" digitsInfo="1.0-2"></app-sats>
+                <app-sats [deweys]="channel.node_right.base_fee_mtokens / 1000" digitsInfo="1.0-2"></app-sats>
               </div>
             </td>
           </tr>

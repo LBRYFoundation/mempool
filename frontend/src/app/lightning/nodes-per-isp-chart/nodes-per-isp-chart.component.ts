@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, HostBinding, NgZone, Input } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, OnInit, HostBinding, NgZone, Input } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { Router } from '@angular/router';
 import { EChartsOption, PieSeriesOption } from '@app/graphs/echarts';
 import { combineLatest, map, Observable, share, startWith, Subject, switchMap, tap } from 'rxjs';
@@ -162,7 +163,7 @@ export class NodesPerISPChartComponent implements OnInit {
             const nodeCount = isp[4].toString();
             return `<b style="color: white">${isp[1]} (${this.sortBy === 'capacity' ? isp[7] : isp[6]}%)</b><br>` +
               $localize`${nodeCount} nodes` + `<br>` +
-              $localize`${this.amountShortenerPipe.transform(isp[2] / 100000000, 2)} BTC`
+              $localize`${this.amountShortenerPipe.transform(isp[2] / COIN_TO_SUBUNIT_MULTIPLIER, 2)} BTC`
             ;
           }
         },
@@ -195,7 +196,7 @@ export class NodesPerISPChartComponent implements OnInit {
           const nodeCount = nodeCountOther.toString();
           return `<b style="color: white">` + $localize`Other (${totalShareOther.toFixed(2) + '%'})` + `</b><br>` +
             $localize`${nodeCount} nodes` + `<br>` +
-            $localize`${this.amountShortenerPipe.transform(capacityOther / 100000000, 2)} BTC`;
+            $localize`${this.amountShortenerPipe.transform(capacityOther / COIN_TO_SUBUNIT_MULTIPLIER, 2)} BTC`;
         }
       },
       data: 9999 as any,

@@ -108,7 +108,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                      <td class="text-center" style="padding: 0.1rem;"><app-amount [satoshis]="poolStats.totalReward" digitsInfo="1.0-0" [noFiat]="true" [ignoreViewMode]="true"></app-amount></td>
+                      <td class="text-center" style="padding: 0.1rem;"><app-amount [deweys]="poolStats.totalReward" digitsInfo="1.0-0" [noFiat]="true" [ignoreViewMode]="true"></app-amount></td>
                       <td class="text-center" style="padding: 0.1rem;">{{ poolStats.estimatedHashrate | amountShortener : 3 : 'H/s' : false : true }}</td>
                       <td class="text-center" style="padding: 0.1rem;" *ngIf="auditAvailable; else emptyTd"><span class="health-badge badge" [class.bg-success]="poolStats.avgBlockHealth >= 99"
                           [class.bg-warning]="poolStats.avgBlockHealth >= 75 && poolStats.avgBlockHealth < 99" [class.bg-danger]="poolStats.avgBlockHealth < 75"
@@ -161,7 +161,7 @@
                     </thead>
                     <tbody>
                       <tr>
-                      <td *ngFor="let total of oob" class="text-center clip" style="padding: 0.1rem;"><app-amount [satoshis]="total.cost" [digitsInfo]="isMobile() ? '1.2-4' : '1.8-8'" [ignoreViewMode]="true"></app-amount></td>
+                      <td *ngFor="let total of oob" class="text-center clip" style="padding: 0.1rem;"><app-amount [deweys]="total.cost" [digitsInfo]="isMobile() ? '1.2-4' : '1.8-8'" [ignoreViewMode]="true"></app-amount></td>
                       </tr>
                     </tbody>
                   </table>
@@ -220,7 +220,7 @@
                           <ng-template #expectedPlaceholder>~</ng-template>
                         </td>
                         <td class="text-center reward">
-                          <app-amount [satoshis]="job.reward"></app-amount>
+                          <app-amount [deweys]="job.reward"></app-amount>
                         </td>
                         <td class="text-center timestamp">
                           <app-timestamp [customFormat]="'yyyy-MM-dd HH:mm:ss'" [unixTime]="job.timestamp" [precision]="1" minUnit="minute" [hideTimeSince]="true"></app-timestamp>
@@ -357,10 +357,10 @@
             </ng-template>
           </td>
           <td class="reward text-end">
-            <app-amount [satoshis]="block.extras.reward" digitsInfo="1.2-2" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
+            <app-amount [deweys]="block.extras.reward" digitsInfo="1.2-2" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
           </td>
           <td *ngIf="!auditAvailable" class="fees text-end">
-            <app-amount [satoshis]="block.extras.totalFees" digitsInfo="1.2-2" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
+            <app-amount [deweys]="block.extras.totalFees" digitsInfo="1.2-2" [noFiat]="true" [ignoreViewMode]="true"></app-amount>
           </td>
           <td class="txs text-end">
             {{ block.tx_count | number }}

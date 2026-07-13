@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { StateService } from '@app/services/state.service';
 import { Transaction, Vout } from '@interfaces/electrs.interface';
 import { Observable, Subscription, catchError, combineLatest, map, of, startWith, switchMap, tap } from 'rxjs';
@@ -55,7 +56,7 @@ export class BlockTransactionsComponent implements OnInit {
       tap((transactions: Transaction[]) => {
         // The block API doesn't contain the block rewards on Liquid
         if (this.stateService.isLiquid() && transactions && transactions[0] && transactions[0].vin[0].is_coinbase) {
-          const blockReward = transactions[0].vout.reduce((acc: number, curr: Vout) => acc + curr.value, 0) / 100000000;
+          const blockReward = transactions[0].vout.reduce((acc: number, curr: Vout) => acc + curr.value, 0) / COIN_TO_SUBUNIT_MULTIPLIER;
           this.blockReward.emit(blockReward);
         }
       })

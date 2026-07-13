@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+﻿import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { EChartsOption } from '@app/graphs/echarts';
 import { BehaviorSubject, Observable, Subscription, combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -340,17 +341,17 @@ export class TreasuriesGraphComponent implements OnInit, OnChanges, OnDestroy {
             color: 'rgb(110, 112, 121)',
             formatter: (val): string => {
               const valSpan = maxValue - (this.period === 'all' ? 0 : minValue);
-              if (valSpan > 100_000_000_000) {
-                return `${this.amountShortenerPipe.transform(Math.round(val / 100_000_000), 0, undefined, true)} BTC`;
+              if (valSpan > COIN_TO_SUBUNIT_MULTIPLIER_000) {
+                return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 0, undefined, true)} BTC`;
               }
               else if (valSpan > 1_000_000_000) {
-                return `${this.amountShortenerPipe.transform(Math.round(val / 100_000_000), 2, undefined, true)} BTC`;
-              } else if (valSpan > 100_000_000) {
-                return `${(val / 100_000_000).toFixed(1)} BTC`;
+                return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 2, undefined, true)} BTC`;
+              } else if (valSpan > COIN_TO_SUBUNIT_MULTIPLIER) {
+                return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(1)} BTC`;
               } else if (valSpan > 10_000_000) {
-                return `${(val / 100_000_000).toFixed(2)} BTC`;
+                return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(2)} BTC`;
               } else if (valSpan > 1_000_000) {
-                return `${(val / 100_000_000).toFixed(3)} BTC`;
+                return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(3)} BTC`;
               } else {
                 return `${this.amountShortenerPipe.transform(val, 0, undefined, true)} sats`;
               }
@@ -389,7 +390,7 @@ export class TreasuriesGraphComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   formatBTC(val: number): string {
-    return `${(val / 100_000_000).toFixed(4)} BTC`;
+    return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(4)} BTC`;
   }
 
   onChartInit(ec) {

@@ -22,7 +22,7 @@
               <app-timestamp [customFormat]="'yyyy-MM-dd HH:mm'" [unixTime]="channel.closing_date" [hideTimeSince]="true"></app-timestamp>
             </td>
             <td class="capacity text-end">
-              <app-amount *ngIf="channel.capacity > 100000000; else smallnode" [satoshis]="channel.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
+              <app-amount *ngIf="channel.capacity > 100000000; else smallnode" [deweys]="channel.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
               <ng-template #smallnode>
                 {{ channel.capacity | amountShortener: 1 }}
                 <span class="sats" i18n="shared.sats">sats</span>

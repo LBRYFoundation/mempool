@@ -25,9 +25,9 @@
           <tr>
             <td i18n="lightning.liquidity">Liquidity</td>
             <td>
-              <app-amount *ngIf="ispNodes.sumLiquidity > 100000000; else smallnode" [satoshis]="ispNodes.sumLiquidity" [digitsInfo]="'1.2-2'" [noFiat]="false"></app-amount>
+              <app-amount *ngIf="ispNodes.sumLiquidity > 100000000; else smallnode" [deweys]="ispNodes.sumLiquidity" [digitsInfo]="'1.2-2'" [noFiat]="false"></app-amount>
               <ng-template #smallnode>
-                <app-sats [satoshis]="ispNodes.sumLiquidity" digitsInfo="1.0-2"></app-sats>
+                <app-sats [deweys]="ispNodes.sumLiquidity" digitsInfo="1.0-2"></app-sats>
               </ng-template>
             </td>
           </tr>

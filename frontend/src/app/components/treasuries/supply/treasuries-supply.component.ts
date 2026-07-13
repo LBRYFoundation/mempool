@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+﻿import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Inject, Input, LOCALE_ID, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { combineLatest, map, Observable, startWith, Subscription } from 'rxjs';
 import { StateService } from '@app/services/state.service';
 import { WalletStats } from '../../../shared/wallet-stats';
@@ -75,7 +76,7 @@ export class TreasuriesSupplyComponent implements OnInit, OnDestroy {
           this.walletBalance = {};
           for (const treasury of this.treasuries) {
             const total = this.walletStats[treasury.wallet] ? this.walletStats[treasury.wallet].balance : summaries[treasury.wallet]?.reduce((acc, tx) => acc + tx.value, 0) || 0;
-            this.walletBalance[treasury.wallet] = total / 100_000_000;
+            this.walletBalance[treasury.wallet] = total / COIN_TO_SUBUNIT_MULTIPLIER;
           }
           this.processSupplyShares();
         })

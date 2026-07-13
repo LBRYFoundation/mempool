@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+﻿import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { StateService } from '@app/services/state.service';
 import { Address, AddressTxSummary } from '@interfaces/electrs.interface';
 import { ElectrsApiService } from '@app/services/electrs-api.service';
@@ -73,7 +74,7 @@ export class AddressTransactionsWidgetComponent implements OnInit, OnChanges, On
   }
 
   getAmountDigits(value: number): string {
-    const decimals = Math.max(0, 4 - Math.ceil(Math.log10(Math.abs(value / 100_000_000))));
+    const decimals = Math.max(0, 4 - Math.ceil(Math.log10(Math.abs(value / COIN_TO_SUBUNIT_MULTIPLIER))));
     return `1.${decimals}-${decimals}`;
   }
 

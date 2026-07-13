@@ -14,7 +14,7 @@
         </a>
       </td>
       <td class="table-cell-satoshis-desktop">
-        <app-amount [satoshis]="transaction.value" [digitsInfo]="getAmountDigits(transaction.value)" [noFiat]="true"></app-amount>
+        <app-amount [deweys]="transaction.value" [digitsInfo]="getAmountDigits(transaction.value)" [noFiat]="true"></app-amount>
       </td>
       <td class="table-cell-fiat" ><app-fiat [value]="transaction.value" [blockConversion]="transaction.price" digitsInfo="1.0-0"></app-fiat></td>
       <td class="table-cell-date">
@@ -23,7 +23,7 @@
         </a>
       </td>
       <td class="table-cell-satoshis-mobile">
-        <app-amount [satoshis]="transaction.value" [digitsInfo]="getAmountDigits(transaction.value)" [noFiat]="true"></app-amount>
+        <app-amount [deweys]="transaction.value" [digitsInfo]="getAmountDigits(transaction.value)" [noFiat]="true"></app-amount>
       </td>
     </tr>
   </tbody>

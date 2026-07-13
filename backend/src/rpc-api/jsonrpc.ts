@@ -39,7 +39,7 @@ JsonRPC.prototype.call = function (method, params) {
     // prepare request options
     const requestOptions = {
       host: this.opts.host || 'localhost',
-      port: this.opts.port || 8332,
+      port: this.opts.port || 9245,
       method: 'POST',
       path: '/',
       headers: {

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, HostBinding, NgZone } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, OnInit, HostBinding, NgZone } from '@angular/core';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { Router } from '@angular/router';
 import { EChartsOption, PieSeriesOption } from '@app/graphs/echarts';
 import { map, Observable, share, tap } from 'rxjs';
@@ -103,7 +104,7 @@ export class NodesPerCountryChartComponent implements OnInit {
             const nodeCount = country.count.toString();
             return `<b style="color: white">${country.name.en} (${country.share}%)</b><br>` +
               $localize`${nodeCount} nodes` + `<br>` +
-              $localize`${this.amountShortenerPipe.transform(country.capacity / 100000000, 2)} BTC capacity`
+              $localize`${this.amountShortenerPipe.transform(country.capacity / COIN_TO_SUBUNIT_MULTIPLIER, 2)} BTC capacity`
             ;
           }
         },

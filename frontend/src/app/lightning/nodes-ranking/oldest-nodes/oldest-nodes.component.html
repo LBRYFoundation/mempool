@@ -26,7 +26,7 @@
             &lrm;{{ node.firstSeen * 1000 | date: 'yyyy-MM-dd' }}
           </td>
           <td *ngIf="!widget" class="capacity text-end">
-            <app-amount [satoshis]="node.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
+            <app-amount [deweys]="node.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
           </td>
           <td *ngIf="!widget" class="channels text-end">
             {{ node.channels | number }}

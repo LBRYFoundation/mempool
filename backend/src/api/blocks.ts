@@ -1,4 +1,5 @@
 import config from '../config';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '../constants';
 import bitcoinApi, { bitcoinCoreApi } from './bitcoin/bitcoin-api-factory';
 import logger from '../logger';
 import memPool from './mempool';
@@ -215,8 +216,8 @@ class Blocks {
       return {
         txid: tx.txid,
         vsize: tx.weight / 4,
-        fee: tx.fee ? Math.round(tx.fee * 100000000) : 0,
-        value: Math.round(tx.vout.reduce((acc, vout) => acc + (vout.value ? vout.value : 0), 0) * 100000000),
+        fee: tx.fee ? Math.round(tx.fee * COIN_TO_SUBUNIT_MULTIPLIER) : 0,
+        value: Math.round(tx.vout.reduce((acc, vout) => acc + (vout.value ? vout.value : 0), 0) * COIN_TO_SUBUNIT_MULTIPLIER),
         flags: 0,
       };
     });
@@ -326,7 +327,7 @@ class Blocks {
     if (coinStatsIndex !== null && coinStatsIndex.best_block_height >= block.height) {
       const txoutset = await bitcoinClient.getTxoutSetinfo('none', block.height);
       extras.utxoSetSize = txoutset.txouts,
-      extras.totalInputAmt = Math.round(txoutset.block_info.prevout_spent * 100000000);
+      extras.totalInputAmt = Math.round(txoutset.block_info.prevout_spent * COIN_TO_SUBUNIT_MULTIPLIER);
     } else {
       extras.utxoSetSize = null;
       extras.totalInputAmt = null;
@@ -1127,7 +1128,8 @@ class Blocks {
       const blockchainInfo = await bitcoinClient.getBlockchainInfo();
       this.updateTimerProgress(timer, 'got blockchain info for initial difficulty adjustment');
       if (blockchainInfo.blocks === blockchainInfo.headers) {
-        const heightDiff = blockHeightTip % 2016;
+        // LBRY adjusts difficulty every block, so use the previous block
+        const heightDiff = blockHeightTip % 1;
         const blockHash = await bitcoinApi.$getBlockHash(blockHeightTip - heightDiff);
         this.updateTimerProgress(timer, 'got block hash for initial difficulty adjustment');
         const block: IEsploraApi.Block = await bitcoinApi.$getBlock(blockHash);
@@ -1135,16 +1137,12 @@ class Blocks {
         this.lastDifficultyAdjustmentTime = block.timestamp;
         this.currentBits = block.bits;
 
-        if (blockHeightTip >= 2016) {
-          const previousPeriodBlockHash = await bitcoinApi.$getBlockHash(blockHeightTip - heightDiff - 2016);
+        if (blockHeightTip >= 1) {
+          const previousPeriodBlockHash = await bitcoinApi.$getBlockHash(blockHeightTip - heightDiff - 1);
           this.updateTimerProgress(timer, 'got previous block hash for initial difficulty adjustment');
           const previousPeriodBlock: IEsploraApi.Block = await bitcoinApi.$getBlock(previousPeriodBlockHash);
           this.updateTimerProgress(timer, 'got previous block for initial difficulty adjustment');
-          if (['liquid', 'liquidtestnet'].includes(config.MEMPOOL.NETWORK)) {
-            this.previousDifficultyRetarget = NaN;
-          } else {
-            this.previousDifficultyRetarget = calcBitsDifference(previousPeriodBlock.bits, block.bits);
-          }
+          this.previousDifficultyRetarget = calcBitsDifference(previousPeriodBlock.bits, block.bits);
           logger.debug(`Initial difficulty adjustment data set.`);
         }
       } else {
@@ -1178,7 +1176,7 @@ class Blocks {
       // fill in missing transaction fee data from verboseBlock
       for (let i = 0; i < transactions.length; i++) {
         if (!transactions[i].fee && transactions[i].txid === verboseBlock.tx[i].txid) {
-          transactions[i].fee = (verboseBlock.tx[i].fee * 100_000_000) || 0;
+          transactions[i].fee = (verboseBlock.tx[i].fee * COIN_TO_SUBUNIT_MULTIPLIER) || 0;
         }
       }
 
@@ -1231,18 +1229,14 @@ class Blocks {
         }
       }
 
-      if (block.height % 2016 === 0) {
+      if (true) { // LBRY adjusts difficulty every block
         if (Common.indexingEnabled()) {
           let adjustment;
-          if (['liquid', 'liquidtestnet'].includes(config.MEMPOOL.NETWORK)) {
-            adjustment = NaN;
-          } else {
-            adjustment = Math.round(
-              // calcBitsDifference returns +- percentage, +100 returns to positive, /100 returns to ratio.
-              // Instead of actually doing /100, just reduce the multiplier.
-              (calcBitsDifference(this.currentBits, block.bits) + 100) * 10000
-            ) / 1000000; // Remove float point noise
-          }
+          adjustment = Math.round(
+            // calcBitsDifference returns +- percentage, +100 returns to positive, /100 returns to ratio.
+            // Instead of actually doing /100, just reduce the multiplier.
+            (calcBitsDifference(this.currentBits, block.bits) + 100) * 10000
+          ) / 1000000; // Remove float point noise
 
           await DifficultyAdjustmentsRepository.$saveAdjustments({
             time: block.timestamp,
@@ -1253,11 +1247,7 @@ class Blocks {
           this.updateTimerProgress(timer, `saved difficulty adjustment for ${this.currentBlockHeight}`);
         }
 
-        if (['liquid', 'liquidtestnet'].includes(config.MEMPOOL.NETWORK)) {
-          this.previousDifficultyRetarget = NaN;
-        } else {
-          this.previousDifficultyRetarget = calcBitsDifference(this.currentBits, block.bits);
-        }
+        this.previousDifficultyRetarget = calcBitsDifference(this.currentBits, block.bits);
         this.lastDifficultyAdjustmentTime = block.timestamp;
         this.currentBits = block.bits;
       }
@@ -1329,16 +1319,8 @@ class Blocks {
 
   /** @asyncUnsafe */
   private async updateQuarterEpochBlockTime(): Promise<void> {
-    if (this.currentBlockHeight >= 503) {
-      try {
-        const quarterEpochBlockHash = await bitcoinApi.$getBlockHash(this.currentBlockHeight - 503);
-        const quarterEpochBlock = await bitcoinApi.$getBlock(quarterEpochBlockHash);
-        this.quarterEpochBlockTime = quarterEpochBlock?.timestamp;
-      } catch (e) {
-      this.quarterEpochBlockTime = null;
-        logger.warn('failed to update last epoch block time: ' + (e instanceof Error ? e.message : e));
-      }
-    }
+    // LBRY adjusts every block, quarter epoch not applicable
+    this.quarterEpochBlockTime = null;
   }
 
   /**
@@ -1760,7 +1742,7 @@ class Blocks {
       if (!transactions) {
         const block = await bitcoinClient.getBlock(hash, 2);
         transactions = block.tx.map(tx => {
-          tx.fee *= 100_000_000;
+          tx.fee *= COIN_TO_SUBUNIT_MULTIPLIER;
           return tx;
         });
       }

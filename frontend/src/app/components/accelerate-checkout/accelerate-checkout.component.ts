@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+﻿/* eslint-disable no-console */
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '@app/shared/coin.constants';
 import { Component, OnInit, OnDestroy, Output, EventEmitter, Input, ChangeDetectorRef, SimpleChanges, HostListener } from '@angular/core';
 import { Subscription, tap, of, catchError, Observable, switchMap, Subject, ReplaySubject, filter, take, takeUntil, timeout } from 'rxjs';
 import { ServicesApiServices } from '@app/services/services-api.service';
@@ -531,7 +532,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
         this.applePay.destroy();
       }
 
-      const costUSD = this.cost / 100_000_000 * this.conversions.USD;
+      const costUSD = this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD;
       const paymentRequest = this.payments.paymentRequest({
         countryCode: 'US',
         currencyCode: 'USD',
@@ -655,7 +656,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
         this.googlePay.destroy();
       }
 
-      const costUSD = this.cost / 100_000_000 * this.conversions.USD;
+      const costUSD = this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD;
       const paymentRequest = this.payments.paymentRequest({
         countryCode: 'US',
         currencyCode: 'USD',
@@ -778,7 +779,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
         return;
       }
 
-      const costUSD = this.cost / 100_000_000 * this.conversions.USD;
+      const costUSD = this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD;
       if (this.isCheckoutLocked > 0) {
         return;
       }
@@ -888,7 +889,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
       }
 
       const redirectHostname = document.location.hostname === 'localhost' ? `http://localhost:4200`: `https://${document.location.hostname}`;
-      const costUSD = this.cost / 100_000_000 * this.conversions.USD;
+      const costUSD = this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD;
       const paymentRequest = this.payments.paymentRequest({
         countryCode: 'US',
         currencyCode: 'USD',
@@ -1088,7 +1089,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
 
     const paymentMethod = this.estimate?.availablePaymentMethods?.cashapp;
     if (paymentMethod) {
-      const costUSD = (this.cost / 100_000_000 * this.conversions.USD);
+      const costUSD = (this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD);
       if (costUSD >= paymentMethod.min && costUSD <= paymentMethod.max) {
         return true;
       }
@@ -1104,7 +1105,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
 
     const paymentMethod = this.estimate?.availablePaymentMethods?.applePay;
     if (paymentMethod) {
-      const costUSD = (this.cost / 100_000_000 * this.conversions.USD);
+      const costUSD = (this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD);
       if (costUSD >= paymentMethod.min && costUSD <= paymentMethod.max) {
         return true;
       }
@@ -1120,7 +1121,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
 
     const paymentMethod = this.estimate?.availablePaymentMethods?.googlePay;
     if (paymentMethod) {
-      const costUSD = (this.cost / 100_000_000 * this.conversions.USD);
+      const costUSD = (this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD);
       if (costUSD >= paymentMethod.min && costUSD <= paymentMethod.max) {
         return true;
       }
@@ -1136,7 +1137,7 @@ export class AccelerateCheckout implements OnInit, OnDestroy {
 
     const paymentMethod = this.estimate?.availablePaymentMethods?.cardOnFile;
     if (paymentMethod) {
-      const costUSD = (this.cost / 100_000_000 * this.conversions.USD);
+      const costUSD = (this.cost / COIN_TO_SUBUNIT_MULTIPLIER * this.conversions.USD);
       if (costUSD >= paymentMethod.min && costUSD <= paymentMethod.max) {
         return true;
       }

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input, ChangeDetectionStrategy, ChangeDet
 import { StateService } from '@app/services/state.service';
 import { Observable, Subscription } from 'rxjs';
 import { Price } from '@app/services/price.service';
+import { COIN_TO_SUBUNIT_MULTIPLIER, COIN_TICKER } from '@app/shared/coin.constants';
 
 @Component({
   selector: 'app-amount',
@@ -15,11 +16,13 @@ export class AmountComponent implements OnInit, OnDestroy {
   currency: string;
   viewAmountMode$: Observable<'btc' | 'sats' | 'fiat'>;
   network = '';
+  COIN_TO_SUBUNIT_MULTIPLIER = COIN_TO_SUBUNIT_MULTIPLIER;
+  COIN_TICKER = COIN_TICKER;
 
   stateSubscription: Subscription;
   currencySubscription: Subscription;
 
-  @Input() satoshis: number;
+  @Input() deweys: number;
   @Input() digitsInfo = '1.8-8';
   @Input() noFiat = false;
   @Input() addPlus = false;

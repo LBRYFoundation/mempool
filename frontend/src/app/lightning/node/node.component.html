@@ -30,7 +30,7 @@
             <tr>
               <td i18n="lightning.active-capacity" class="text-truncate label">Active capacity</td>
               <td>
-                <app-sats [satoshis]="node.capacity"></app-sats>
+                <app-sats [deweys]="node.capacity"></app-sats>
                 <app-fiat [value]="node.capacity" digitsInfo="1.0-0"></app-fiat>
               </td>
             </tr>
@@ -43,7 +43,7 @@
             <tr>
               <td i18n="lightning.active-channels-avg" class="text-wrap label">Average channel size</td>
               <td>
-                <app-sats [satoshis]="node.avgCapacity"></app-sats>
+                <app-sats [deweys]="node.avgCapacity"></app-sats>
                 <app-fiat [value]="node.avgCapacity" digitsInfo="1.0-0"></app-fiat>
               </td>
             </tr>
@@ -197,7 +197,7 @@
                   <tr>
                     <td class="label" i18n="liquidity-ad.lease-base-fee">Lease base fee</td>
                     <td>
-                      <app-sats [valueOverride]="liquidityAd.lease_fee_base_sat === null ? '- ' : undefined" [satoshis]="liquidityAd.lease_fee_base_sat"></app-sats>
+                      <app-sats [valueOverride]="liquidityAd.lease_fee_base_sat === null ? '- ' : undefined" [deweys]="liquidityAd.lease_fee_base_sat"></app-sats>
                     </td>
                   </tr>
                   <tr>

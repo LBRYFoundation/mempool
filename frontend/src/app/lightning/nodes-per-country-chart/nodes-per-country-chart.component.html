@@ -44,7 +44,7 @@
           <td class="text-end share">{{ country.share }}%</td>
           <td class="text-end nodes">{{ country.count }}</td>
           <td class="text-end capacity">
-            <app-amount *ngIf="country.capacity > 100000000; else smallchannel" [satoshis]="country.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
+            <app-amount *ngIf="country.capacity > 100000000; else smallchannel" [deweys]="country.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
             <ng-template #smallchannel>
               {{ country.capacity ?? 0 | amountShortener: 1 }}
               <span class="sats" i18n="shared.sats">sats</span>

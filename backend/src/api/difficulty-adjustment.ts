@@ -88,53 +88,38 @@ export function calcDifficultyAdjustment(
   network: string,
   latestBlockTimestamp: number,
 ): DifficultyAdjustment {
-  const EPOCH_BLOCK_LENGTH = 2016; // Bitcoin mainnet
-  const BLOCK_SECONDS_TARGET = 600; // Bitcoin mainnet
-  const TESTNET_MAX_BLOCK_SECONDS = 1200; // Bitcoin testnet
+  const BLOCK_SECONDS_TARGET = 150; // LBRY target block time: 2.5 minutes
 
   const diffSeconds = Math.max(0, nowSeconds - DATime);
-  const blocksInEpoch = (blockHeight >= 0) ? blockHeight % EPOCH_BLOCK_LENGTH : 0;
-  const progressPercent = (blockHeight >= 0) ? blocksInEpoch / EPOCH_BLOCK_LENGTH * 100 : 100;
-  const remainingBlocks = EPOCH_BLOCK_LENGTH - blocksInEpoch;
-  const nextRetargetHeight = (blockHeight >= 0) ? blockHeight + remainingBlocks : 0;
+  const blocksInEpoch = 0; // LBRY: every block is a retarget
+  const progressPercent = 100; // LBRY: always at 100% of epoch
+  const remainingBlocks = 1; // LBRY: next retarget is always next block
+  const nextRetargetHeight = (blockHeight >= 0) ? blockHeight + 1 : 0;
   const expectedBlocks = diffSeconds / BLOCK_SECONDS_TARGET;
-  const actualTimespan = (blocksInEpoch === 2015 ? latestBlockTimestamp : nowSeconds) - DATime;
 
-  let difficultyChange = 0;
-  let timeAvgSecs = blocksInEpoch ? diffSeconds / blocksInEpoch : BLOCK_SECONDS_TARGET;
+  // LBRY adjusts difficulty every block based on time since previous block
+  const timeSinceLastBlock = Math.max(0, latestBlockTimestamp ? nowSeconds - latestBlockTimestamp : BLOCK_SECONDS_TARGET);
+  let difficultyChange = (BLOCK_SECONDS_TARGET / timeSinceLastBlock - 1) * 100;
+  let timeAvgSecs = timeSinceLastBlock;
   let adjustedTimeAvgSecs = timeAvgSecs;
 
-  // for the first 504 blocks of the epoch, calculate the expected avg block interval
-  // from a sliding window over the last 504 blocks
-  if (quarterEpochTime && blocksInEpoch < 503) {
-    const timeLastEpoch = DATime - quarterEpochTime;
-    const adjustedTimeLastEpoch = timeLastEpoch * (1 + (previousRetarget / 100));
-    const adjustedTimeSpan = diffSeconds + adjustedTimeLastEpoch;
-    adjustedTimeAvgSecs = adjustedTimeSpan / 503;
-    difficultyChange = (BLOCK_SECONDS_TARGET / (adjustedTimeSpan / 504) - 1) * 100;
-  } else {
-    difficultyChange = (BLOCK_SECONDS_TARGET / (actualTimespan / (blocksInEpoch + 1)) - 1) * 100;
-  }
-
-  // Max increase is x4 (+300%)
+  // Cap difficulty change
   if (difficultyChange > 300) {
     difficultyChange = 300;
   }
-  // Max decrease is /4 (-75%)
   if (difficultyChange < -75) {
     difficultyChange = -75;
   }
 
-  // Testnet difficulty is set to 1 after 20 minutes of no blocks,
-  // therefore the time between blocks will always be below 20 minutes (1200s).
+  // Testnet: difficulty reset to minimum after target time
   let timeOffset = 0;
   if (network === 'testnet') {
+    const TESTNET_MAX_BLOCK_SECONDS = 300;
     if (timeAvgSecs > TESTNET_MAX_BLOCK_SECONDS) {
       timeAvgSecs = TESTNET_MAX_BLOCK_SECONDS;
     }
-
     const secondsSinceLastBlock = nowSeconds - latestBlockTimestamp;
-    if (secondsSinceLastBlock + timeAvgSecs > TESTNET_MAX_BLOCK_SECONDS) {
+    if (secondsSinceLastBlock > TESTNET_MAX_BLOCK_SECONDS) {
       timeOffset = -Math.min(secondsSinceLastBlock, TESTNET_MAX_BLOCK_SECONDS) * 1000;
     }
   }

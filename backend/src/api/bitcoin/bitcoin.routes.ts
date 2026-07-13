@@ -2,6 +2,7 @@ import { Application, Request, Response } from 'express';
 import axios from 'axios';
 import * as bitcoinjs from 'bitcoinjs-lib';
 import config from '../../config';
+import { COIN_TO_SUBUNIT_MULTIPLIER } from '../../constants';
 import websocketHandler from '../websocket-handler';
 import mempool from '../mempool';
 import feeApi from '../fee-api';
@@ -1213,7 +1214,7 @@ class BitcoinRoutes {
             const rawPrevout = await bitcoinClient.getTxOut(outpoint.txid, outpoint.vout, false);
             if (rawPrevout) {
               prevout = {
-                value: Math.round(rawPrevout.value * 100000000),
+                value: Math.round(rawPrevout.value * COIN_TO_SUBUNIT_MULTIPLIER),
                 scriptpubkey: rawPrevout.scriptPubKey.hex,
                 scriptpubkey_asm: rawPrevout.scriptPubKey.asm ? transactionUtils.convertScriptSigAsm(rawPrevout.scriptPubKey.hex) : '',
                 scriptpubkey_type: transactionUtils.translateScriptPubKeyType(rawPrevout.scriptPubKey.type),

@@ -1,4 +1,5 @@
-import { MempoolBlockDelta, MempoolBlockDeltaCompressed, MempoolDeltaChange, TransactionCompressed } from '../interfaces/websocket.interface';
+﻿import { MempoolBlockDelta, MempoolBlockDeltaCompressed, MempoolDeltaChange, TransactionCompressed } from '../interfaces/websocket.interface';
+import { COIN_TO_SUBUNIT_MULTIPLIER, COIN_TICKER, COIN_SUBUNIT_NAME } from '@app/shared/coin.constants';
 import { TransactionStripped } from '@interfaces/node-api.interface';
 import { AmountShortenerPipe } from '@app/shared/pipes/amount-shortener.pipe';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -205,12 +206,12 @@ export function renderSats(value: number, network: string, mode: 'sats' | 'btc' 
       break;
   }
   if (mode === 'btc' || (mode === 'auto' && value >= 1000000)) {
-    return `${amountShortenerPipe.transform(value / 100000000, 2)} ${prefix}BTC`;
+    return `${amountShortenerPipe.transform(value / COIN_TO_SUBUNIT_MULTIPLIER, 2)} ${prefix}${COIN_TICKER}`;
   } else {
     if (prefix.length) {
       prefix += '-';
     }
-    return `${amountShortenerPipe.transform(value, 2)} ${prefix}sats`;
+    return `${amountShortenerPipe.transform(value, 2)} ${prefix}${COIN_SUBUNIT_NAME}`;
   }
 }
 
