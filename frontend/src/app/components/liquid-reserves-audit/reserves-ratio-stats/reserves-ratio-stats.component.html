@@ -1,4 +1,4 @@
-<div class="fee-estimation-container">
+﻿<div class="fee-estimation-container">
   <div class="item"> 
     <h5 class="card-title" i18n="liquid.reserve-deficit">Reserve Deficit</h5> 
     <div *ngIf="(unbackedMonths$ | async) as unbackedMonths; else loadingData" class="card-text">
@@ -19,7 +19,7 @@
     <div *ngIf="(unbackedMonths$ | async) as unbackedMonths; else loadingData" class="card-text">
       <ng-container *ngIf="unbackedMonths.historyComplete; else loadingData">
         <div class="fee-text">
-          {{ unbackedMonths.delta1m > 0 ? '+' : ''}}{{ unbackedMonths.delta1m | number: '1.2-2' }} <span i18n="shared.btc|BTC">BTC</span>
+          {{ unbackedMonths.delta1m > 0 ? '+' : ''}}{{ unbackedMonths.delta1m | number: '1.2-2' }} <span i18n="shared.btc|LBC">LBC</span>
         </div>
       </ng-container>
     </div>

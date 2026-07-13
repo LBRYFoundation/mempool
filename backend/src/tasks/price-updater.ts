@@ -269,6 +269,12 @@ class PriceUpdater {
     }
 
     if (config.FIAT_PRICE.API_KEY && this.latestPrices.USD > 0 && Object.keys(this.latestConversionsRatesFromFeed).length > 0) {
+      // Convert primary non-USD currencies from USD using conversion rates
+      for (const currency of this.currencies) {
+        if (currency !== 'USD' && this.latestPrices[currency] <= 0 && this.latestConversionsRatesFromFeed[currency] > 0) {
+          this.setLatestPrice(currency, parseFloat((this.latestPrices.USD * this.latestConversionsRatesFromFeed[currency]).toPrecision(6)));
+        }
+      }
       for (const conversionCurrency of this.newCurrencies) {
         if (this.latestConversionsRatesFromFeed[conversionCurrency] > 0 && this.latestPrices.USD * this.latestConversionsRatesFromFeed[conversionCurrency] < MAX_PRICES[conversionCurrency]) {
           this.setLatestPrice(conversionCurrency, parseFloat((this.latestPrices.USD * this.latestConversionsRatesFromFeed[conversionCurrency]).toPrecision(6)));
