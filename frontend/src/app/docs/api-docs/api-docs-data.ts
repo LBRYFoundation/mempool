@@ -3969,7 +3969,7 @@ export const restApiDocsData = [
     "segwitTotalTxs": 0,
     "segwitTotalSize": 0,
     "segwitTotalWeight": 0,
-    "header": "02000000ce0782217396e8f2e91e0b76a8a245cff7f13efab645c5COIN_TO_SUBUNIT_MULTIPLIER0000000006c684bb0477609cbc986385c38fc628cce68f7d52e26b466e3ba5ef07bb83c9df30f94558e41161818426aac",
+    "header": "02000000ce0782217396e8f2e91e0b76a8a245cff7f13efab645c51000000000000000006c684bb0477609cbc986385c38fc628cce68f7d52e26b466e3ba5ef07bb83c9df30f94558e41161818426aac",
     "utxoSetChange": 340,
     "utxoSetSize": 21180314,
     "totalInputAmt": 531132021255,
@@ -5379,7 +5379,7 @@ export const restApiDocsData = [
     "coinbase_raw": "044c86041b020602",
     "coinbase_address": null,
     "coinbase_signature": "OP_PUSHBYTES_65 041b0e8c2567c12536aa13357b79a073dc4444acb83c4ec7a0e2f99dd7457516c5817242da796924ca4e99947d087fedf9ce467cb9f7c6287078f801df276fdf84 OP_CHECKSIG",
-    "coinbase_signature_ascii": "\u0004L�\u0004\u001b\u0002\u0006\u0002",
+    "coinbase_signature_ascii": "\u0004L´┐¢\u0004\u001b\u0002\u0006\u0002",
     "pool_slug": "unknown",
     "orphans": []
   }
@@ -5442,7 +5442,7 @@ export const restApiDocsData = [
     "coinbase_raw": "03a08601000427f1001c046a510100522cfabe6d6d0000000000000000000068692066726f6d20706f6f6c7365727665726aac1eeeed88",
     "coinbase_address": "mtkbaiLiUH3fvGJeSzuN3kUgmJzqinLejJ",
     "coinbase_signature": "OP_DUP OP_HASH160 OP_PUSHBYTES_20 912e2b234f941f30b18afbb4fa46171214bf66c8 OP_EQUALVERIFY OP_CHECKSIG",
-    "coinbase_signature_ascii": "\u0003 �\u0001\u0000\u0004'ñ\u0000\u001c\u0004jQ\u0001\u0000R,ú¾mm\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000hi from poolserverj¬\u001eîí�",
+    "coinbase_signature_ascii": "\u0003 ´┐¢\u0001\u0000\u0004'├▒\u0000\u001c\u0004jQ\u0001\u0000R,├║┬¥mm\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000hi from poolserverj┬¼\u001e├«├¡´┐¢",
     "pool_slug": "unknown",
     "orphans": []
   }
@@ -5505,7 +5505,7 @@ export const restApiDocsData = [
     "coinbase_raw": "03a08601",
     "coinbase_address": "tb1psfjl80vk0yp3agcq6ylueas29rau00mfq90mhejerpgccg33xhasd9gjyd",
     "coinbase_signature": "OP_PUSHNUM_1 OP_PUSHBYTES_32 8265f3bd9679031ea300d13fccf60a28fbc7bf69015fbbe65918518c223135fb",
-    "coinbase_signature_ascii": "\u0003 �\u0001",
+    "coinbase_signature_ascii": "\u0003 ´┐¢\u0001",
     "pool_slug": "unknown",
     "orphans": []
   }
@@ -6253,7 +6253,7 @@ export const restApiDocsData = [
     "weight": 331851,
     "previousblockhash": "00000000005a0843cc88b09cf6def15e4dc8fe38ab5cf3ad890f34a2df497004",
     "extras": {
-      "coinbaseRaw": "03666c19706f6f6c2e626974636f696e2e636f6d0100000225830COIN_TO_SUBUNIT_MULTIPLIER00",
+      "coinbaseRaw": "03666c19706f6f6c2e626974636f696e2e636f6d010000022583010000000000",
       "medianFee": 1,
       "reward": 39726335,
       "totalFees": 663835,
@@ -8627,13 +8627,13 @@ export const restApiDocsData = [
           esModule: ['eefbafa4006e77099db059eebe14687965813283e5754d317431d9984554735d'],
           commonJS: ['eefbafa4006e77099db059eebe14687965813283e5754d317431d9984554735d'],
           curl: ['eefbafa4006e77099db059eebe14687965813283e5754d317431d9984554735d'],
-          response: `0200000000010146c398e70cceaf9d8f734e603bc53e4c4c0605ab46cb1b5807a62c90f5aed50d0COIN_TO_SUBUNIT_MULTIPLIERfeffffff023c0fc10c010000001600145033f65b590f2065fe55414213f1d25ab20b6c4f487d1700000000001600144b812d5ef41fc433654d186463d41b458821ff740247304402202438dc18801919baa64eb18f7e925a...`
+          response: `0200000000010146c398e70cceaf9d8f734e603bc53e4c4c0605ab46cb1b5807a62c90f5aed50d0100000000feffffff023c0fc10c010000001600145033f65b590f2065fe55414213f1d25ab20b6c4f487d1700000000001600144b812d5ef41fc433654d186463d41b458821ff740247304402202438dc18801919baa64eb18f7e925a...`
         },
         codeSampleSignet: {
           esModule: ['fe80c0c2439d41d301f35570018b4239ca3204293e5e5fd68d64013e8fc45025'],
           commonJS: ['fe80c0c2439d41d301f35570018b4239ca3204293e5e5fd68d64013e8fc45025'],
           curl: ['fe80c0c2439d41d301f35570018b4239ca3204293e5e5fd68d64013e8fc45025'],
-          response: `02000000000101b7913f140f19850975352064a7ccfd7e96e1ed9a847c463309839a37c9d01e530000000000ffffffff017d65a61d000000002200204ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc3326001015COIN_TO_SUBUNIT_MULTIPLIER`
+          response: `02000000000101b7913f140f19850975352064a7ccfd7e96e1ed9a847c463309839a37c9d01e530000000000ffffffff017d65a61d000000002200204ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc3326001015100000000`
         },
         codeSampleLiquid: {
           esModule: [`801c8cccdfb1cac41f97d290e00e3e608753bb5b8fbc5ba39f3ab6feef13dd4a`],
@@ -8645,7 +8645,7 @@ export const restApiDocsData = [
           esModule: [`59dd7a0bce4f3310272ff352402291bc555f141149812d8f573f62e7fdc19cc4`],
           commonJS: [`59dd7a0bce4f3310272ff352402291bc555f141149812d8f573f62e7fdc19cc4`],
           curl: [`59dd7a0bce4f3310272ff352402291bc555f141149812d8f573f62e7fdc19cc4`],
-          response: `020000000102fa567669f73a314138aa6dbe74e3935612895df273d20ccbbedbecd44a04d3ce0000000000fdffffff8412fed07b8316dd4304df90af6f20292d3b2950133711c0ee43eb94fe12cc4f0COIN_TO_SUBUNIT_MULTIPLIERfdffffff040b801035010192095b8d9316f28450e98a85c915994c3f80ecc493adf505d73e9609a51e48bc0f35e34f88c482654d659fa779dcbf0457dc71053f3edcf76bd3667f03821ffcc4fc4ae5c2668685fec678e4...`,
+          response: `020000000102fa567669f73a314138aa6dbe74e3935612895df273d20ccbbedbecd44a04d3ce0000000000fdffffff8412fed07b8316dd4304df90af6f20292d3b2950133711c0ee43eb94fe12cc4f0100000000fdffffff040b801035010192095b8d9316f28450e98a85c915994c3f80ecc493adf505d73e9609a51e48bc0f35e34f88c482654d659fa779dcbf0457dc71053f3edcf76bd3667f03821ffcc4fc4ae5c2668685fec678e4...`,
         },
       }
     },
@@ -8686,7 +8686,7 @@ export const restApiDocsData = [
           esModule: ['15e10745f15593a899cef391191bdd3d7c12412cc4696b7bcb669d0feadc8521'],
           commonJS: ['15e10745f15593a899cef391191bdd3d7c12412cc4696b7bcb669d0feadc8521'],
           curl: ['15e10745f15593a899cef391191bdd3d7c12412cc4696b7bcb669d0feadc8521'],
-          response: `0300000058f6dd09ac5aea942c01d12e75b351e73f4304cc44274COIN_TO_SUBUNIT_MULTIPLIER0000000000ef0c2fa8517414b742094a020da7eba891b47d660ef66f126ad01e5be99a2fd09ae093558e411618c14240df820700000ce4d15e17594f257b22d1ddf47d07b3b88779a8374fcd515ad883d79726c6027da6abfcbc1341a049b30277d3bf14e4663...`
+          response: `0300000058f6dd09ac5aea942c01d12e75b351e73f4304cc442741000000000000000000ef0c2fa8517414b742094a020da7eba891b47d660ef66f126ad01e5be99a2fd09ae093558e411618c14240df820700000ce4d15e17594f257b22d1ddf47d07b3b88779a8374fcd515ad883d79726c6027da6abfcbc1341a049b30277d3bf14e4663...`
         },
         codeSampleTestnet: {
           esModule: ['eefbafa4006e77099db059eebe14687965813283e5754d317431d9984554735d'],
@@ -9698,10 +9698,10 @@ export const restApiDocsData = [
     "en": "Switzerland",
     "es": "Suiza",
     "fr": "Suisse",
-    "ja": "スイス連邦",
-    "pt-BR": "Suíça",
-    "ru": "Швейцария",
-    "zh-CN": "瑞士"
+    "ja": "Òé╣ÒéñÒé╣ÚÇúÚéª",
+    "pt-BR": "Su├¡├ºa",
+    "ru": "ð¿ð▓ðÁð╣Ðåð░ÐÇð©ÐÅ",
+    "zh-CN": "þæ×Õú½"
   },
   "nodes": [
     {
@@ -9712,28 +9712,28 @@ export const restApiDocsData = [
       "first_seen": 1574813156,
       "updated_at": 1661814056,
       "city": {
-        "de": "Zürich",
+        "de": "Z├╝rich",
         "en": "Zurich",
-        "es": "Zúrich",
+        "es": "Z├║rich",
         "fr": "Zurich",
-        "ja": "チューリッヒ",
+        "ja": "ÒâüÒâÑÒâ╝Òâ¬ÒââÒâÆ",
         "pt-BR": "Zurique",
-        "ru": "Цюрих",
-        "zh-CN": "苏黎世"
+        "ru": "ðªÐÄÐÇð©Ðà",
+        "zh-CN": "ÞïÅÚ╗Äõ©û"
       },
       "country": {
         "de": "Schweiz",
         "en": "Switzerland",
         "es": "Suiza",
         "fr": "Suisse",
-        "ja": "スイス連邦",
-        "pt-BR": "Suíça",
-        "ru": "Швейцария",
-        "zh-CN": "瑞士"
+        "ja": "Òé╣ÒéñÒé╣ÚÇúÚéª",
+        "pt-BR": "Su├¡├ºa",
+        "ru": "ð¿ð▓ðÁð╣Ðåð░ÐÇð©ÐÅ",
+        "zh-CN": "þæ×Õú½"
       },
       "iso_code": "CH",
       "subdivision": {
-        "de": "Zürich",
+        "de": "Z├╝rich",
         "en": "Zurich",
         "fr": "Zurich"
       }
@@ -9752,10 +9752,10 @@ export const restApiDocsData = [
     "en": "Switzerland",
     "es": "Suiza",
     "fr": "Suisse",
-    "ja": "スイス連邦",
-    "pt-BR": "Suíça",
-    "ru": "Швейцария",
-    "zh-CN": "瑞士"
+    "ja": "Òé╣ÒéñÒé╣ÚÇúÚéª",
+    "pt-BR": "Su├¡├ºa",
+    "ru": "ð¿ð▓ðÁð╣Ðåð░ÐÇð©ÐÅ",
+    "zh-CN": "þæ×Õú½"
   },
   "nodes": [
     {
@@ -9770,20 +9770,20 @@ export const restApiDocsData = [
         "en": "Thun",
         "es": "Thun",
         "fr": "Thoune",
-        "ja": "トゥーン",
+        "ja": "ÒâêÒéÑÒâ╝Òâ│",
         "pt-BR": "Tune",
-        "ru": "Тун",
-        "zh-CN": "图恩"
+        "ru": "ðóÐâð¢",
+        "zh-CN": "Õø¥µü®"
       },
       "country": {
         "de": "Schweiz",
         "en": "Switzerland",
         "es": "Suiza",
         "fr": "Suisse",
-        "ja": "スイス連邦",
-        "pt-BR": "Suíça",
-        "ru": "Швейцария",
-        "zh-CN": "瑞士"
+        "ja": "Òé╣ÒéñÒé╣ÚÇúÚéª",
+        "pt-BR": "Su├¡├ºa",
+        "ru": "ð¿ð▓ðÁð╣Ðåð░ÐÇð©ÐÅ",
+        "zh-CN": "þæ×Õú½"
       },
       "iso_code": "CH",
       "subdivision": {
@@ -9805,11 +9805,11 @@ export const restApiDocsData = [
     "de": "Vereinigte Staaten",
     "en": "United States",
     "es": "Estados Unidos",
-    "fr": "États Unis",
-    "ja": "アメリカ",
+    "fr": "├ëtats Unis",
+    "ja": "ÒéóÒâíÒâ¬Òé½",
     "pt-BR": "EUA",
-    "ru": "США",
-    "zh-CN": "美国"
+    "ru": "ðíð¿ðÉ",
+    "zh-CN": "þ¥ÄÕø¢"
   },
   "nodes": [
     {
@@ -9821,27 +9821,27 @@ export const restApiDocsData = [
       "updated_at": 0,
       "city": {
         "en": "Oak Park",
-        "ru": "Оук-Парк"
+        "ru": "ð×Ðâð║-ðƒð░ÐÇð║"
       },
       "country": {
         "de": "Vereinigte Staaten",
         "en": "United States",
         "es": "Estados Unidos",
-        "fr": "États Unis",
-        "ja": "アメリカ",
+        "fr": "├ëtats Unis",
+        "ja": "ÒéóÒâíÒâ¬Òé½",
         "pt-BR": "EUA",
-        "ru": "США",
-        "zh-CN": "美国"
+        "ru": "ðíð¿ðÉ",
+        "zh-CN": "þ¥ÄÕø¢"
       },
       "iso_code": "US",
       "subdivision": {
         "en": "Illinois",
         "es": "Illinois",
         "fr": "Illinois",
-        "ja": "イリノイ州",
-        "pt-BR": "Ilinóis",
-        "ru": "Иллинойс",
-        "zh-CN": "伊利诺伊州"
+        "ja": "ÒéñÒâ¬ÒâÄÒéñÕÀ×",
+        "pt-BR": "Ilin├│is",
+        "ru": "ðÿð╗ð╗ð©ð¢ð¥ð╣Ðü",
+        "zh-CN": "õ╝èÕê®Þ»║õ╝èÕÀ×"
       }
     },
     {
@@ -9856,30 +9856,30 @@ export const restApiDocsData = [
         "en": "Atlanta",
         "es": "Atlanta",
         "fr": "Atlanta",
-        "ja": "アトランタ",
+        "ja": "ÒéóÒâêÒâ®Òâ│Òé┐",
         "pt-BR": "Atlanta",
-        "ru": "Атланта",
-        "zh-CN": "亚特兰大"
+        "ru": "ðÉÐéð╗ð░ð¢Ðéð░",
+        "zh-CN": "õ║Üþë╣Õà░Õñº"
       },
       "country": {
         "de": "Vereinigte Staaten",
         "en": "United States",
         "es": "Estados Unidos",
-        "fr": "États Unis",
-        "ja": "アメリカ",
+        "fr": "├ëtats Unis",
+        "ja": "ÒéóÒâíÒâ¬Òé½",
         "pt-BR": "EUA",
-        "ru": "США",
-        "zh-CN": "美国"
+        "ru": "ðíð¿ðÉ",
+        "zh-CN": "þ¥ÄÕø¢"
       },
       "iso_code": "US",
       "subdivision": {
         "en": "Georgia",
         "es": "Georgia",
-        "fr": "Géorgie",
-        "ja": "ジョージア州",
-        "pt-BR": "Geórgia",
-        "ru": "Джорджия",
-        "zh-CN": "乔治亚"
+        "fr": "G├®orgie",
+        "ja": "Òé©ÒâºÒâ╝Òé©ÒéóÕÀ×",
+        "pt-BR": "Ge├│rgia",
+        "ru": "ðöðÂð¥ÐÇð┤ðÂð©ÐÅ",
+        "zh-CN": "õ╣öµ▓╗õ║Ü"
       }
     },
     ...
@@ -9920,11 +9920,11 @@ export const restApiDocsData = [
       "de": "Vereinigte Staaten",
       "en": "United States",
       "es": "Estados Unidos",
-      "fr": "États Unis",
-      "ja": "アメリカ",
+      "fr": "├ëtats Unis",
+      "ja": "ÒéóÒâíÒâ¬Òé½",
       "pt-BR": "EUA",
-      "ru": "США",
-      "zh-CN": "美国"
+      "ru": "ðíð¿ðÉ",
+      "zh-CN": "þ¥ÄÕø¢"
     },
     "iso": "US",
     "count": 2775,
@@ -9937,10 +9937,10 @@ export const restApiDocsData = [
       "en": "France",
       "es": "Francia",
       "fr": "France",
-      "ja": "フランス共和国",
-      "pt-BR": "França",
-      "ru": "Франция",
-      "zh-CN": "法国"
+      "ja": "ÒâòÒâ®Òâ│Òé╣Õà▒ÕÆîÕø¢",
+      "pt-BR": "Fran├ºa",
+      "ru": "ðñÐÇð░ð¢Ðåð©ÐÅ",
+      "zh-CN": "µ│òÕø¢"
     },
     "iso": "FR",
     "count": 972,
@@ -9960,11 +9960,11 @@ export const restApiDocsData = [
       "de": "Vereinigte Staaten",
       "en": "United States",
       "es": "Estados Unidos",
-      "fr": "États Unis",
-      "ja": "アメリカ",
+      "fr": "├ëtats Unis",
+      "ja": "ÒéóÒâíÒâ¬Òé½",
       "pt-BR": "EUA",
-      "ru": "США",
-      "zh-CN": "美国"
+      "ru": "ðíð¿ðÉ",
+      "zh-CN": "þ¥ÄÕø¢"
     },
     "iso": "US",
     "count": 304,
@@ -9977,10 +9977,10 @@ export const restApiDocsData = [
       "en": "Germany",
       "es": "Alemania",
       "fr": "Allemagne",
-      "ja": "ドイツ連邦共和国",
+      "ja": "ÒâëÒéñÒâäÚÇúÚéªÕà▒ÕÆîÕø¢",
       "pt-BR": "Alemanha",
-      "ru": "Германия",
-      "zh-CN": "德国"
+      "ru": "ðôðÁÐÇð╝ð░ð¢ð©ÐÅ",
+      "zh-CN": "Õ¥ÀÕø¢"
     },
     "iso": "DE",
     "count": 85,
@@ -10000,11 +10000,11 @@ export const restApiDocsData = [
       "de": "Vereinigte Staaten",
       "en": "United States",
       "es": "Estados Unidos",
-      "fr": "États Unis",
-      "ja": "アメリカ",
+      "fr": "├ëtats Unis",
+      "ja": "ÒéóÒâíÒâ¬Òé½",
       "pt-BR": "EUA",
-      "ru": "США",
-      "zh-CN": "美国"
+      "ru": "ðíð¿ðÉ",
+      "zh-CN": "þ¥ÄÕø¢"
     },
     "iso": "US",
     "count": 4,
@@ -10015,12 +10015,12 @@ export const restApiDocsData = [
     "name": {
       "de": "Japan",
       "en": "Japan",
-      "es": "Japón",
+      "es": "Jap├│n",
       "fr": "Japon",
-      "ja": "日本",
-      "pt-BR": "Japão",
-      "ru": "Япония",
-      "zh-CN": "日本"
+      "ja": "µùÑµ£¼",
+      "pt-BR": "Jap├úo",
+      "ru": "ð»ð┐ð¥ð¢ð©ÐÅ",
+      "zh-CN": "µùÑµ£¼"
     },
     "iso": "JP",
     "count": 2,
@@ -10073,11 +10073,11 @@ export const restApiDocsData = [
         "de": "Vereinigte Staaten",
         "en": "United States",
         "es": "Estados Unidos",
-        "fr": "États Unis",
-        "ja": "アメリカ",
+        "fr": "├ëtats Unis",
+        "ja": "ÒéóÒâíÒâ¬Òé½",
         "pt-BR": "EUA",
-        "ru": "США",
-        "zh-CN": "美国"
+        "ru": "ðíð¿ðÉ",
+        "zh-CN": "þ¥ÄÕø¢"
       },
       "iso_code": "US",
       "subdivision": null
@@ -10105,11 +10105,11 @@ export const restApiDocsData = [
         "de": "Vereinigte Staaten",
         "en": "United States",
         "es": "Estados Unidos",
-        "fr": "États Unis",
-        "ja": "アメリカ",
+        "fr": "├ëtats Unis",
+        "ja": "ÒéóÒâíÒâ¬Òé½",
         "pt-BR": "EUA",
-        "ru": "США",
-        "zh-CN": "美国"
+        "ru": "ðíð¿ðÉ",
+        "zh-CN": "þ¥ÄÕø¢"
       },
       "iso_code": "US",
       "subdivision": null
@@ -10129,19 +10129,19 @@ export const restApiDocsData = [
       "public_key": "02dadf6c28f3284d591cd2a4189d1530c1ff82c07059ebea150a33ab76e7364b4a",
       "capacity": 51155987,
       "channels": 15,
-      "alias": "珠美ノード⚡@wakiyamap",
+      "alias": "þÅáþ¥ÄÒâÄÒâ╝ÒâëÔÜí@wakiyamap",
       "first_seen": 1612221581,
       "updated_at": 1662382573,
       "city": null,
       "country": {
         "de": "Japan",
         "en": "Japan",
-        "es": "Japón",
+        "es": "Jap├│n",
         "fr": "Japon",
-        "ja": "日本",
-        "pt-BR": "Japão",
-        "ru": "Япония",
-        "zh-CN": "日本"
+        "ja": "µùÑµ£¼",
+        "pt-BR": "Jap├úo",
+        "ru": "ð»ð┐ð¥ð¢ð©ÐÅ",
+        "zh-CN": "µùÑµ£¼"
       },
       "iso_code": "JP",
       "subdivision": null
@@ -10372,7 +10372,7 @@ export const restApiDocsData = [
   "topByChannels": [
     {
       "publicKey": "02dadf6c28f3284d591cd2a4189d1530c1ff82c07059ebea150a33ab76e7364b4a",
-      "alias": "珠美ノード⚡@wakiyamap",
+      "alias": "þÅáþ¥ÄÒâÄÒâ╝ÒâëÔÜí@wakiyamap",
       "channels": 15
     },
     {
@@ -10421,24 +10421,24 @@ export const restApiDocsData = [
     "firstSeen": 1574813156,
     "updatedAt": 1661814056,
     "city": {
-      "de": "Zürich",
+      "de": "Z├╝rich",
       "en": "Zurich",
-      "es": "Zúrich",
+      "es": "Z├║rich",
       "fr": "Zurich",
-      "ja": "チューリッヒ",
+      "ja": "ÒâüÒâÑÒâ╝Òâ¬ÒââÒâÆ",
       "pt-BR": "Zurique",
-      "ru": "Цюрих",
-      "zh-CN": "苏黎世"
+      "ru": "ðªÐÄÐÇð©Ðà",
+      "zh-CN": "ÞïÅÚ╗Äõ©û"
     },
     "country": {
       "de": "Schweiz",
       "en": "Switzerland",
       "es": "Suiza",
       "fr": "Suisse",
-      "ja": "スイス連邦",
-      "pt-BR": "Suíça",
-      "ru": "Швейцария",
-      "zh-CN": "瑞士"
+      "ja": "Òé╣ÒéñÒé╣ÚÇúÚéª",
+      "pt-BR": "Su├¡├ºa",
+      "ru": "ð¿ð▓ðÁð╣Ðåð░ÐÇð©ÐÅ",
+      "zh-CN": "þæ×Õú½"
     }
   },
   {
@@ -10453,11 +10453,11 @@ export const restApiDocsData = [
       "de": "Vereinigte Staaten",
       "en": "United States",
       "es": "Estados Unidos",
-      "fr": "États Unis",
-      "ja": "アメリカ",
+      "fr": "├ëtats Unis",
+      "ja": "ÒéóÒâíÒâ¬Òé½",
       "pt-BR": "EUA",
-      "ru": "США",
-      "zh-CN": "美国"
+      "ru": "ðíð¿ðÉ",
+      "zh-CN": "þ¥ÄÕø¢"
     }
   },
   ...
@@ -10480,20 +10480,20 @@ export const restApiDocsData = [
       "en": "Melbourne",
       "es": "Melbourne",
       "fr": "Melbourne",
-      "ja": "メルボルン",
+      "ja": "ÒâíÒâ½Òâ£Òâ½Òâ│",
       "pt-BR": "Melbourne",
-      "ru": "Мельбурн",
-      "zh-CN": "墨尔本"
+      "ru": "ð£ðÁð╗Ðîð▒ÐâÐÇð¢",
+      "zh-CN": "Õó¿Õ░öµ£¼"
     },
     "country": {
       "de": "Australien",
       "en": "Australia",
       "es": "Australia",
       "fr": "Australie",
-      "ja": "オーストラリア",
-      "pt-BR": "Austrália",
-      "ru": "Австралия",
-      "zh-CN": "澳大利亚"
+      "ja": "Òé¬Òâ╝Òé╣ÒâêÒâ®Òâ¬Òéó",
+      "pt-BR": "Austr├ília",
+      "ru": "ðÉð▓ÐüÐéÐÇð░ð╗ð©ÐÅ",
+      "zh-CN": "µ¥│ÕñºÕê®õ║Ü"
     }
   },
   {
@@ -10508,20 +10508,20 @@ export const restApiDocsData = [
       "en": "Melbourne",
       "es": "Melbourne",
       "fr": "Melbourne",
-      "ja": "メルボルン",
+      "ja": "ÒâíÒâ½Òâ£Òâ½Òâ│",
       "pt-BR": "Melbourne",
-      "ru": "Мельбурн",
-      "zh-CN": "墨尔本"
+      "ru": "ð£ðÁð╗Ðîð▒ÐâÐÇð¢",
+      "zh-CN": "Õó¿Õ░öµ£¼"
     },
     "country": {
       "de": "Australien",
       "en": "Australia",
       "es": "Australia",
       "fr": "Australie",
-      "ja": "オーストラリア",
-      "pt-BR": "Austrália",
-      "ru": "Австралия",
-      "zh-CN": "澳大利亚"
+      "ja": "Òé¬Òâ╝Òé╣ÒâêÒâ®Òâ¬Òéó",
+      "pt-BR": "Austr├ília",
+      "ru": "ðÉð▓ÐüÐéÐÇð░ð╗ð©ÐÅ",
+      "zh-CN": "µ¥│ÕñºÕê®õ║Ü"
     }
   },
   ...
@@ -10545,10 +10545,10 @@ export const restApiDocsData = [
       "en": "Germany",
       "es": "Alemania",
       "fr": "Allemagne",
-      "ja": "ドイツ連邦共和国",
+      "ja": "ÒâëÒéñÒâäÚÇúÚéªÕà▒ÕÆîÕø¢",
       "pt-BR": "Alemanha",
-      "ru": "Германия",
-      "zh-CN": "德国"
+      "ru": "ðôðÁÐÇð╝ð░ð¢ð©ÐÅ",
+      "zh-CN": "Õ¥ÀÕø¢"
     }
   },
   {
@@ -10559,23 +10559,23 @@ export const restApiDocsData = [
     "firstSeen": 1628031165,
     "updatedAt": 1648064593,
     "city": {
-      "de": "Ōsaka",
+      "de": "┼îsaka",
       "en": "Osaka",
       "es": "Osaka",
       "fr": "Osaka",
-      "ja": "大阪市",
+      "ja": "ÕñºÚÿ¬Õ©é",
       "pt-BR": "Osaka",
-      "ru": "Осака"
+      "ru": "ð×Ðüð░ð║ð░"
     },
     "country": {
       "de": "Japan",
       "en": "Japan",
-      "es": "Japón",
+      "es": "Jap├│n",
       "fr": "Japon",
-      "ja": "日本",
-      "pt-BR": "Japão",
-      "ru": "Япония",
-      "zh-CN": "日本"
+      "ja": "µùÑµ£¼",
+      "pt-BR": "Jap├úo",
+      "ru": "ð»ð┐ð¥ð¢ð©ÐÅ",
+      "zh-CN": "µùÑµ£¼"
     }
   },
   ...
@@ -10622,11 +10622,11 @@ export const restApiDocsData = [
       "de": "Vereinigte Staaten",
       "en": "United States",
       "es": "Estados Unidos",
-      "fr": "États Unis",
-      "ja": "アメリカ",
+      "fr": "├ëtats Unis",
+      "ja": "ÒéóÒâíÒâ¬Òé½",
       "pt-BR": "EUA",
-      "ru": "США",
-      "zh-CN": "美国"
+      "ru": "ðíð¿ðÉ",
+      "zh-CN": "þ¥ÄÕø¢"
     }
   },
   {
@@ -10641,19 +10641,19 @@ export const restApiDocsData = [
       "en": "Vancouver",
       "es": "Vancouver",
       "fr": "Vancouver",
-      "ja": "バンクーバー市",
-      "pt-BR": "Vancôver",
-      "ru": "Ванкувер"
+      "ja": "ÒâÉÒâ│Òé»Òâ╝ÒâÉÒâ╝Õ©é",
+      "pt-BR": "Vanc├┤ver",
+      "ru": "ðÆð░ð¢ð║Ðâð▓ðÁÐÇ"
     },
     "country": {
       "de": "Kanada",
       "en": "Canada",
-      "es": "Canadá",
+      "es": "Canad├í",
       "fr": "Canada",
-      "ja": "カナダ",
-      "pt-BR": "Canadá",
-      "ru": "Канада",
-      "zh-CN": "加拿大"
+      "ja": "Òé½ÒâèÒâÇ",
+      "pt-BR": "Canad├í",
+      "ru": "ðÜð░ð¢ð░ð┤ð░",
+      "zh-CN": "Õèáµï┐Õñº"
     }
   },
   ...
@@ -10676,20 +10676,20 @@ export const restApiDocsData = [
       "en": "Melbourne",
       "es": "Melbourne",
       "fr": "Melbourne",
-      "ja": "メルボルン",
+      "ja": "ÒâíÒâ½Òâ£Òâ½Òâ│",
       "pt-BR": "Melbourne",
-      "ru": "Мельбурн",
-      "zh-CN": "墨尔本"
+      "ru": "ð£ðÁð╗Ðîð▒ÐâÐÇð¢",
+      "zh-CN": "Õó¿Õ░öµ£¼"
     },
     "country": {
       "de": "Australien",
       "en": "Australia",
       "es": "Australia",
       "fr": "Australie",
-      "ja": "オーストラリア",
-      "pt-BR": "Austrália",
-      "ru": "Австралия",
-      "zh-CN": "澳大利亚"
+      "ja": "Òé¬Òâ╝Òé╣ÒâêÒâ®Òâ¬Òéó",
+      "pt-BR": "Austr├ília",
+      "ru": "ðÉð▓ÐüÐéÐÇð░ð╗ð©ÐÅ",
+      "zh-CN": "µ¥│ÕñºÕê®õ║Ü"
     }
   },
   {
@@ -10712,20 +10712,20 @@ export const restApiDocsData = [
     "city": {
       "de": "Clifton",
       "en": "Clifton",
-      "ja": "クリフトン",
+      "ja": "Òé»Òâ¬ÒâòÒâêÒâ│",
       "pt-BR": "Clifton",
-      "ru": "Клифтон",
-      "zh-CN": "克利夫頓"
+      "ru": "ðÜð╗ð©ÐäÐéð¥ð¢",
+      "zh-CN": "ÕàïÕê®Õñ½Úáô"
     },
     "country": {
       "de": "Vereinigte Staaten",
       "en": "United States",
       "es": "Estados Unidos",
-      "fr": "États Unis",
-      "ja": "アメリカ",
+      "fr": "├ëtats Unis",
+      "ja": "ÒéóÒâíÒâ¬Òé½",
       "pt-BR": "EUA",
-      "ru": "США",
-      "zh-CN": "美国"
+      "ru": "ðíð¿ðÉ",
+      "zh-CN": "þ¥ÄÕø¢"
     }
   },
   ...
@@ -10738,7 +10738,7 @@ export const restApiDocsData = [
           response: `[
   {
     "publicKey": "02dadf6c28f3284d591cd2a4189d1530c1ff82c07059ebea150a33ab76e7364b4a",
-    "alias": "珠美ノード⚡@wakiyamap",
+    "alias": "þÅáþ¥ÄÒâÄÒâ╝ÒâëÔÜí@wakiyamap",
     "channels": 15,
     "capacity": 51155987,
     "firstSeen": 1612221581,
@@ -10747,12 +10747,12 @@ export const restApiDocsData = [
     "country": {
       "de": "Japan",
       "en": "Japan",
-      "es": "Japón",
+      "es": "Jap├│n",
       "fr": "Japon",
-      "ja": "日本",
-      "pt-BR": "Japão",
-      "ru": "Япония",
-      "zh-CN": "日本"
+      "ja": "µùÑµ£¼",
+      "pt-BR": "Jap├úo",
+      "ru": "ð»ð┐ð¥ð¢ð©ÐÅ",
+      "zh-CN": "µùÑµ£¼"
     }
   },
   {
@@ -10768,10 +10768,10 @@ export const restApiDocsData = [
       "en": "Germany",
       "es": "Alemania",
       "fr": "Allemagne",
-      "ja": "ドイツ連邦共和国",
+      "ja": "ÒâëÒéñÒâäÚÇúÚéªÕà▒ÕÆîÕø¢",
       "pt-BR": "Alemanha",
-      "ru": "Германия",
-      "zh-CN": "德国"
+      "ru": "ðôðÁÐÇð╝ð░ð¢ð©ÐÅ",
+      "zh-CN": "Õ¥ÀÕø¢"
     }
   },
   ...
@@ -10814,29 +10814,29 @@ export const restApiDocsData = [
     "firstSeen": 1518001533,
     "updatedAt": 1661713804,
     "city": {
-      "de": "Brüssel",
+      "de": "Br├╝ssel",
       "en": "Brussels",
       "es": "Bruselas",
       "fr": "Bruxelles",
-      "ja": "ブリュッセル",
+      "ja": "ÒâûÒâ¬ÒâÑÒââÒé╗Òâ½",
       "pt-BR": "Bruxelas",
-      "ru": "Брюссель",
-      "zh-CN": "布鲁塞尔"
+      "ru": "ðæÐÇÐÄÐüÐüðÁð╗Ðî",
+      "zh-CN": "Õ©âÚ▓üÕí×Õ░ö"
     },
     "country": {
       "de": "Belgien",
       "en": "Belgium",
-      "es": "Bélgica",
+      "es": "B├®lgica",
       "fr": "Belgique",
-      "ja": "ベルギー王国",
-      "pt-BR": "Bélgica",
-      "ru": "Бельгия",
-      "zh-CN": "比利时"
+      "ja": "ÒâÖÒâ½Òé«Òâ╝þÄïÕø¢",
+      "pt-BR": "B├®lgica",
+      "ru": "ðæðÁð╗Ðîð│ð©ÐÅ",
+      "zh-CN": "µ»öÕê®µùÂ"
     }
   },
   {
     "publicKey": "024bd94f0425590434538fd21d4e58982f7e9cfd8f339205a73deb9c0e0341f5bd",
-    "alias": "CL.rompert.com🔵 ",
+    "alias": "CL.rompert.com­ƒöÁ ",
     "channels": 2,
     "capacity": 600000,
     "firstSeen": 1520596684,
@@ -10844,20 +10844,20 @@ export const restApiDocsData = [
     "city": {
       "de": "Clifton",
       "en": "Clifton",
-      "ja": "クリフトン",
+      "ja": "Òé»Òâ¬ÒâòÒâêÒâ│",
       "pt-BR": "Clifton",
-      "ru": "Клифтон",
-      "zh-CN": "克利夫頓"
+      "ru": "ðÜð╗ð©ÐäÐéð¥ð¢",
+      "zh-CN": "ÕàïÕê®Õñ½Úáô"
     },
     "country": {
       "de": "Vereinigte Staaten",
       "en": "United States",
       "es": "Estados Unidos",
-      "fr": "États Unis",
-      "ja": "アメリカ",
+      "fr": "├ëtats Unis",
+      "ja": "ÒéóÒâíÒâ¬Òé½",
       "pt-BR": "EUA",
-      "ru": "США",
-      "zh-CN": "美国"
+      "ru": "ðíð¿ðÉ",
+      "zh-CN": "þ¥ÄÕø¢"
     }
   },
   ...
@@ -10880,20 +10880,20 @@ export const restApiDocsData = [
       "en": "Melbourne",
       "es": "Melbourne",
       "fr": "Melbourne",
-      "ja": "メルボルン",
+      "ja": "ÒâíÒâ½Òâ£Òâ½Òâ│",
       "pt-BR": "Melbourne",
-      "ru": "Мельбурн",
-      "zh-CN": "墨尔本"
+      "ru": "ð£ðÁð╗Ðîð▒ÐâÐÇð¢",
+      "zh-CN": "Õó¿Õ░öµ£¼"
     },
     "country": {
       "de": "Australien",
       "en": "Australia",
       "es": "Australia",
       "fr": "Australie",
-      "ja": "オーストラリア",
-      "pt-BR": "Austrália",
-      "ru": "Австралия",
-      "zh-CN": "澳大利亚"
+      "ja": "Òé¬Òâ╝Òé╣ÒâêÒâ®Òâ¬Òéó",
+      "pt-BR": "Austr├ília",
+      "ru": "ðÉð▓ÐüÐéÐÇð░ð╗ð©ÐÅ",
+      "zh-CN": "µ¥│ÕñºÕê®õ║Ü"
     }
   },
   {
@@ -10908,20 +10908,20 @@ export const restApiDocsData = [
       "en": "Frankfurt am Main",
       "es": "Francfort",
       "fr": "Francfort-sur-le-Main",
-      "ja": "フランクフルト・アム・マイン",
+      "ja": "ÒâòÒâ®Òâ│Òé»ÒâòÒâ½ÒâêÒâ╗ÒéóÒâáÒâ╗Òâ×ÒéñÒâ│",
       "pt-BR": "Frankfurt am Main",
-      "ru": "Франкфурт",
-      "zh-CN": "法兰克福"
+      "ru": "ðñÐÇð░ð¢ð║ÐäÐâÐÇÐé",
+      "zh-CN": "µ│òÕà░ÕàïþªÅ"
     },
     "country": {
       "de": "Deutschland",
       "en": "Germany",
       "es": "Alemania",
       "fr": "Allemagne",
-      "ja": "ドイツ連邦共和国",
+      "ja": "ÒâëÒéñÒâäÚÇúÚéªÕà▒ÕÆîÕø¢",
       "pt-BR": "Alemanha",
-      "ru": "Германия",
-      "zh-CN": "德国"
+      "ru": "ðôðÁÐÇð╝ð░ð¢ð©ÐÅ",
+      "zh-CN": "Õ¥ÀÕø¢"
     }
   },
   ...
@@ -10945,10 +10945,10 @@ export const restApiDocsData = [
       "en": "Germany",
       "es": "Alemania",
       "fr": "Allemagne",
-      "ja": "ドイツ連邦共和国",
+      "ja": "ÒâëÒéñÒâäÚÇúÚéªÕà▒ÕÆîÕø¢",
       "pt-BR": "Alemanha",
-      "ru": "Германия",
-      "zh-CN": "德国"
+      "ru": "ðôðÁÐÇð╝ð░ð¢ð©ÐÅ",
+      "zh-CN": "Õ¥ÀÕø¢"
     }
   },
   {
@@ -11008,31 +11008,31 @@ export const restApiDocsData = [
   "iso_code": "DE",
   "as_organization": "NetCologne GmbH",
   "city": {
-    "de": "Köln",
+    "de": "K├Âln",
     "en": "Cologne",
     "es": "Colonia",
     "fr": "Cologne",
-    "ja": "ケルン",
-    "pt-BR": "Colônia",
-    "ru": "Кёльн",
-    "zh-CN": "科隆"
+    "ja": "Òé▒Òâ½Òâ│",
+    "pt-BR": "Col├┤nia",
+    "ru": "ðÜÐæð╗Ðîð¢",
+    "zh-CN": "þºæÚÜå"
   },
   "country": {
     "de": "Deutschland",
     "en": "Germany",
     "es": "Alemania",
     "fr": "Allemagne",
-    "ja": "ドイツ連邦共和国",
+    "ja": "ÒâëÒéñÒâäÚÇúÚéªÕà▒ÕÆîÕø¢",
     "pt-BR": "Alemanha",
-    "ru": "Германия",
-    "zh-CN": "德国"
+    "ru": "ðôðÁÐÇð╝ð░ð¢ð©ÐÅ",
+    "zh-CN": "Õ¥ÀÕø¢"
   },
   "subdivision": {
     "de": "Nordrhein-Westfalen",
     "en": "North Rhine-Westphalia",
     "es": "Renania del Norte-Westfalia",
-    "fr": "Rhénanie du Nord-Westphalie",
-    "ru": "Северный Рейн-Вестфалия"
+    "fr": "Rh├®nanie du Nord-Westphalie",
+    "ru": "ðíðÁð▓ðÁÐÇð¢Ðïð╣ ðáðÁð╣ð¢-ðÆðÁÐüÐéÐäð░ð╗ð©ÐÅ"
   },
   "active_channel_count": 55,
   "capacity": "31505027",
@@ -11061,29 +11061,29 @@ export const restApiDocsData = [
   "as_organization": "Google Cloud",
   "city": {
     "en": "North Charleston",
-    "ja": "ノースチャールストン",
+    "ja": "ÒâÄÒâ╝Òé╣ÒâüÒâúÒâ╝Òâ½Òé╣ÒâêÒâ│",
     "pt-BR": "North Charleston",
-    "ru": "Норт-Чарлстон",
-    "zh-CN": "北查尔斯顿"
+    "ru": "ðØð¥ÐÇÐé-ðºð░ÐÇð╗ÐüÐéð¥ð¢",
+    "zh-CN": "ÕîùµƒÑÕ░öµû»Úí┐"
   },
   "country": {
     "de": "Vereinigte Staaten",
     "en": "United States",
     "es": "Estados Unidos",
-    "fr": "États Unis",
-    "ja": "アメリカ",
+    "fr": "├ëtats Unis",
+    "ja": "ÒéóÒâíÒâ¬Òé½",
     "pt-BR": "EUA",
-    "ru": "США",
-    "zh-CN": "美国"
+    "ru": "ðíð¿ðÉ",
+    "zh-CN": "þ¥ÄÕø¢"
   },
   "subdivision": {
     "en": "South Carolina",
     "es": "Carolina del Sur",
     "fr": "Caroline du Sud",
-    "ja": "サウスカロライナ州",
+    "ja": "ÒéÁÒéªÒé╣Òé½Òâ¡Òâ®ÒéñÒâèÕÀ×",
     "pt-BR": "Carolina do Sul",
-    "ru": "Южная Каролина",
-    "zh-CN": "南卡罗来纳州"
+    "ru": "ð«ðÂð¢ð░ÐÅ ðÜð░ÐÇð¥ð╗ð©ð¢ð░",
+    "zh-CN": "ÕìùÕìíþ¢ùµØÑþ║│ÕÀ×"
   },
   "active_channel_count": 46,
   "capacity": "111724126",
@@ -11116,10 +11116,10 @@ export const restApiDocsData = [
     "en": "Germany",
     "es": "Alemania",
     "fr": "Allemagne",
-    "ja": "ドイツ連邦共和国",
+    "ja": "ÒâëÒéñÒâäÚÇúÚéªÕà▒ÕÆîÕø¢",
     "pt-BR": "Alemanha",
-    "ru": "Германия",
-    "zh-CN": "德国"
+    "ru": "ðôðÁÐÇð╝ð░ð¢ð©ÐÅ",
+    "zh-CN": "Õ¥ÀÕø¢"
   },
   "subdivision": null,
   "active_channel_count": 12,
@@ -11281,7 +11281,7 @@ export const restApiDocsData = [
     "latitude": 50.1188
   },
   "node_right": {
-    "alias": "Blixt Wallet 🟡",
+    "alias": "Blixt Wallet ­ƒƒí",
     "public_key": "0230a5bca558e6741460c13dd34e636da28e52afd91cf93db87ed1b0392a7466eb",
     "channels": 3,
     "capacity": 34754430,
@@ -11815,7 +11815,7 @@ export const restApiDocsData = [
           response: `[
   [
     "02dadf6c28f3284d591cd2a4189d1530c1ff82c07059ebea150a33ab76e7364b4a",
-    "珠美ノード⚡@wakiyamap",
+    "þÅáþ¥ÄÒâÄÒâ╝ÒâëÔÜí@wakiyamap",
     139.6895,
     35.6897,
     "0271cf3881e6eadad960f47125434342e57e65b98a78afa99f9b4191c02dd7ab3b",
@@ -11933,7 +11933,7 @@ export const restApiDocsData = [
   ],
   [
     "02dadf6c28f3284d591cd2a4189d1530c1ff82c07059ebea150a33ab76e7364b4a",
-    "珠美ノード⚡@wakiyamap",
+    "þÅáþ¥ÄÒâÄÒâ╝ÒâëÔÜí@wakiyamap",
     139.6895,
     35.6897,
     "02ad48db0d1a7f7c3d186ddc57f8e62c49a1234fb829af9ccd3be1a4596bc39120",
@@ -12901,7 +12901,7 @@ export const faqData = [
     category: 'advanced',
     showConditions: bitcoinNetworks,
     fragment: 'how-do-mempool-goggles-work',
-    title: 'How do Mempool Goggles® work?',
+    title: 'How do Mempool Goggles┬« work?',
   },
   {
     type: 'endpoint',
@@ -13370,7 +13370,7 @@ export const electrumApiDocsData = [
     responseExample: `{
   "jsonrpc": "2.0",
   "id": 1,
-  "result": "0200000000010COIN_TO_SUBUNIT_MULTIPLIER00000000000000000000000000000000000000000000000000000000ffffffff5d0378380e049bc164692f466f756e6472792055534120506f6f6c202364726f70676f6c642ffabe6d6dd44f35d084e35ea9a357464d0c2510e43bb568a5b29ef898d3e7e8690c1f90b90COIN_TO_SUBUNIT_MULTIPLIER00000036491a5a7d13020000000000ffffffff04eb7ac612000000002200207086320071974eef5e72eaa01dd9096e10c0383483855ea6b344259c244f73c20000000000000000266a24aa21a9ed3384fdddc3722e862f962a0878460114bf4dc2430e6fd3205e9537da28b45d0600000000000000002f6a2d434f52450158d8efc838d2de558eedeabce631c7dff92c947ae6d18fda214e5b9f350ffc7b6cf3058b9026e76500000000000000002b6a2952534b424c4f434b3ae99adb1d2ac81cc7d3680512413dcae46d51a79f039615b4e3eff61000805db10120000000000000000000000000000000000000000000000000000000000000000000000000"
+  "result": "020000000001010000000000000000000000000000000000000000000000000000000000000000ffffffff5d0378380e049bc164692f466f756e6472792055534120506f6f6c202364726f70676f6c642ffabe6d6dd44f35d084e35ea9a357464d0c2510e43bb568a5b29ef898d3e7e8690c1f90b9010000000000000036491a5a7d13020000000000ffffffff04eb7ac612000000002200207086320071974eef5e72eaa01dd9096e10c0383483855ea6b344259c244f73c20000000000000000266a24aa21a9ed3384fdddc3722e862f962a0878460114bf4dc2430e6fd3205e9537da28b45d0600000000000000002f6a2d434f52450158d8efc838d2de558eedeabce631c7dff92c947ae6d18fda214e5b9f350ffc7b6cf3058b9026e76500000000000000002b6a2952534b424c4f434b3ae99adb1d2ac81cc7d3680512413dcae46d51a79f039615b4e3eff61000805db10120000000000000000000000000000000000000000000000000000000000000000000000000"
 }`
   },
   {

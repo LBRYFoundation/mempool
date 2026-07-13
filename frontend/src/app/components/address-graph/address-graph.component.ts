@@ -327,7 +327,7 @@ export class AddressGraphComponent implements OnChanges, OnDestroy {
             color: 'rgb(110, 112, 121)',
             formatter: (val): string => {
               const valSpan = maxValue - (this.period === 'all' ? 0 : minValue);
-              if (valSpan > COIN_TO_SUBUNIT_MULTIPLIER_000) {
+              if (valSpan > COIN_TO_SUBUNIT_MULTIPLIER * 1000) {
                 return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 0, undefined, true)} BTC`;
               }
               else if (valSpan > 1_000_000_000) {
@@ -337,7 +337,7 @@ export class AddressGraphComponent implements OnChanges, OnDestroy {
               } else if (valSpan > 10_000_000) {
                 return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(2)} BTC`;
               } else if (valSpan > 1_000_000) {
-                if (maxValue > COIN_TO_SUBUNIT_MULTIPLIER_000) {
+                if (maxValue > COIN_TO_SUBUNIT_MULTIPLIER * 1000) {
                   return `${this.amountShortenerPipe.transform(Math.round(val / COIN_TO_SUBUNIT_MULTIPLIER), 3, undefined, true)} BTC`;
                 }
                 return `${(val / COIN_TO_SUBUNIT_MULTIPLIER).toFixed(3)} BTC`;

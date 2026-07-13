@@ -344,8 +344,8 @@ export class TransactionsListComponent implements OnInit, OnChanges, OnDestroy {
           }
         }
 
-        tx.largeInput = tx.largeInput || tx.vin.some(vin => (vin?.prevout?.value > COIN_TO_SUBUNIT_MULTIPLIER0));
-        tx.largeOutput = tx.vout.some(vout => (vout?.value > COIN_TO_SUBUNIT_MULTIPLIER0));
+        tx.largeInput = tx.largeInput || tx.vin.some(vin => (vin?.prevout?.value > COIN_TO_SUBUNIT_MULTIPLIER * 10));
+        tx.largeOutput = tx.vout.some(vout => (vout?.value > COIN_TO_SUBUNIT_MULTIPLIER * 10));
       });
 
       if (this.blockTime && this.transactions?.length && this.currency) {
