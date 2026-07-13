@@ -264,14 +264,14 @@ class PriceUpdater {
       if (prices.length === 0) {
         this.setLatestPrice(currency, -1);
       } else {
-        this.setLatestPrice(currency, Math.round(getMedian(prices)));
+        this.setLatestPrice(currency, parseFloat(getMedian(prices).toPrecision(6)));
       }
     }
 
     if (config.FIAT_PRICE.API_KEY && this.latestPrices.USD > 0 && Object.keys(this.latestConversionsRatesFromFeed).length > 0) {
       for (const conversionCurrency of this.newCurrencies) {
         if (this.latestConversionsRatesFromFeed[conversionCurrency] > 0 && this.latestPrices.USD * this.latestConversionsRatesFromFeed[conversionCurrency] < MAX_PRICES[conversionCurrency]) {
-          this.setLatestPrice(conversionCurrency, Math.round(this.latestPrices.USD * this.latestConversionsRatesFromFeed[conversionCurrency]));
+          this.setLatestPrice(conversionCurrency, parseFloat((this.latestPrices.USD * this.latestConversionsRatesFromFeed[conversionCurrency]).toPrecision(6)));
         }
       }
     }
@@ -404,7 +404,7 @@ class PriceUpdater {
         if (grouped[time][currency].length === 0) {
           continue;
         }
-        prices[currency] = Math.round(getMedian(grouped[time][currency]));
+        prices[currency] = parseFloat(getMedian(grouped[time][currency]).toPrecision(6));
       }
       await PricesRepository.$savePrices(parseInt(time, 10), prices);
       ++totalInserted;

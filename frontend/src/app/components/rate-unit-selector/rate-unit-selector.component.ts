@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+﻿import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { StorageService } from '@app/services/storage.service';
 import { StateService } from '@app/services/state.service';
@@ -15,7 +15,7 @@ export class RateUnitSelectorComponent implements OnInit, OnDestroy {
   rateUnitForm: UntypedFormGroup;
   rateUnitSub: Subscription;
   units = [
-    { name: 'vb', label: 'sat/vB' },
+    { name: 'vb', label: 'dewey/vB' },
     { name: 'wu', label: 'sat/WU' },
   ];
 

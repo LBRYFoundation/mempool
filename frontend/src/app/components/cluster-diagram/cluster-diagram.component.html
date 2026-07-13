@@ -1,4 +1,4 @@
-<div class="graph-container" [class.preview]="preview" #graphContainer>
+﻿<div class="graph-container" [class.preview]="preview" #graphContainer>
   <svg [attr.width]="svgWidth" [attr.height]="svgHeight" [attr.viewBox]="svgViewBox" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient *ngFor="let edge of edges; trackBy: trackByEdgeId"
@@ -67,7 +67,7 @@
         (mouseenter)="onChunkEnter(outline.chunkIndex)"
         (mouseleave)="onChunkLeave()"
         (click)="onChunkClick(outline.chunkIndex, $event)">
-        {{ outline.feerate | feeRounding }} sat/vB
+        {{ outline.feerate | feeRounding }} dewey/vB
       </text>
     </ng-container>
 
@@ -145,7 +145,7 @@
         </tr>
         <tr>
           <th i18n="transaction.fee-rate|Transaction fee rate">Fee rate</th>
-          <td>{{ hoverNode.feerate | feeRounding }} <span class="unit">sat/vB</span></td>
+          <td>{{ hoverNode.feerate | feeRounding }} <span class="unit">dewey/vB</span></td>
         </tr>
       </table>
       <div class="legend">
@@ -181,7 +181,7 @@
         </tr>
         <tr>
           <th i18n="transaction.fee-rate|Transaction fee rate">Fee rate</th>
-          <td>{{ hoverNode.feerate | feeRounding }} <span class="unit">sat/vB</span></td>
+          <td>{{ hoverNode.feerate | feeRounding }} <span class="unit">dewey/vB</span></td>
         </tr>
       </table>
       <div class="legend">
