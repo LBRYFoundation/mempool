@@ -61,7 +61,7 @@
                     <tr>
                       <td class="item" i18n="accelerator.in-band-fees">In-band fees</td>
                       <td style="text-align: end;">
-                        {{ estimate.txSummary.effectiveFee | number : '1.0-0' }} <span class="symbol" i18n="shared.sats">sats</span>
+                        {{ estimate.txSummary.effectiveFee | number : '1.0-0' }} <span class="symbol" i18n="shared.deweys">deweys</span>
                       </td>
                     </tr>
                     <tr class="info group-last">
@@ -94,7 +94,7 @@
                   <div class="d-flex mb-0">
                     <ng-container *ngFor="let option of maxRateOptions">
                       <button type="button" class="btn btn-primary flex-grow-1 btn-border btn-sm feerate" [class]="{active: selectFeeRateIndex === option.index}" (click)="setUserBid(option)">
-                        <span class="fee">{{ option.fee + estimate.mempoolBaseFee + estimate.vsizeFee | number }} <span class="symbol" i18n="shared.sats">sats</span></span>
+                        <span class="fee">{{ option.fee + estimate.mempoolBaseFee + estimate.vsizeFee | number }} <span class="symbol" i18n="shared.deweys">deweys</span></span>
                         <span class="rate">~<app-fee-rate [fee]="option.rate" rounding="1.0-0"></app-fee-rate></span>
                       </button>
                     </ng-container>
@@ -127,7 +127,7 @@
                           {{ math.max(0, estimate.nextBlockFee - estimate.txSummary.effectiveFee) | number }}
                         </td>
                         <td class="units">
-                          <span class="symbol" i18n="shared.sats">sats</span>
+                          <span class="symbol" i18n="shared.deweys">deweys</span>
                           <span class="fiat ms-1"><app-fiat [value]="math.max(0, estimate.nextBlockFee - estimate.txSummary.effectiveFee)"></app-fiat></span>
                         </td>
                       </tr>
@@ -149,7 +149,7 @@
                           {{ maxRateOptions[selectFeeRateIndex].fee | number }}
                         </td>
                         <td class="units">
-                          <span class="symbol" i18n="shared.sats">sats</span>
+                          <span class="symbol" i18n="shared.deweys">deweys</span>
                           <span class="fiat ms-1"><app-fiat [value]="maxRateOptions[selectFeeRateIndex].fee"></app-fiat></span>
                         </td>
                       </tr>
@@ -167,7 +167,7 @@
                         +{{ estimate.mempoolBaseFee | number }}
                       </td>
                       <td class="units">
-                        <span class="symbol" i18n="shared.sats">sats</span>
+                        <span class="symbol" i18n="shared.deweys">deweys</span>
                         <span class="fiat ms-1"><app-fiat [value]="estimate.mempoolBaseFee"></app-fiat></span>
                       </td>
                     </tr>
@@ -179,7 +179,7 @@
                         +{{ estimate.vsizeFee | number }}
                       </td>
                       <td class="units">
-                        <span class="symbol" i18n="shared.sats">sats</span>
+                        <span class="symbol" i18n="shared.deweys">deweys</span>
                         <span class="fiat ms-1"><app-fiat [value]="estimate.vsizeFee"></app-fiat></span>
                       </td>
                     </tr>
@@ -197,7 +197,7 @@
                         </span>
                       </td>
                       <td class="units">
-                        <span class="symbol" i18n="shared.sats">sats</span>
+                        <span class="symbol" i18n="shared.deweys">deweys</span>
                         <span class="fiat ms-1"><app-fiat [value]="estimate.cost + estimate.mempoolBaseFee + estimate.vsizeFee"></app-fiat></span>
                       </td>
                     </tr>
@@ -219,7 +219,7 @@
                         </span>
                       </td>
                       <td class="units">
-                        <span class="symbol" i18n="shared.sats">sats</span>
+                        <span class="symbol" i18n="shared.deweys">deweys</span>
                         <span class="fiat ms-1">
                           <app-fiat [value]="cost" [colorClass]="canUseBalance && estimate.userBalance < cost ? 'red-color' : 'green-color'"></app-fiat>
                         </span>
@@ -235,7 +235,7 @@
                         {{ estimate.userBalance | number }}
                       </td>
                       <td class="units">
-                        <span class="symbol" i18n="shared.sats">sats</span>
+                        <span class="symbol" i18n="shared.deweys">deweys</span>
                         <span class="fiat ms-1">
                           <app-fiat [value]="estimate.userBalance" [colorClass]="estimate.userBalance < cost ? 'red-color' : 'green-color'"></app-fiat>
                         </span>
@@ -351,7 +351,7 @@
             <span><ng-container *ngTemplateOutlet="accelerateTo; context: {$implicit:(userBid + estimate.txSummary.effectiveFee) / estimate.txSummary.effectiveVsize}"></ng-container></span>
             <span class="checkout-text">
               @if (!calculating) {
-                <ng-container i18n="accelerator.for-an-additional-cost">For an additional</ng-container> <app-fiat [value]="cost"></app-fiat> (<span><small style="font-family: monospace;">{{ cost | number }}</small>&nbsp;<span class="symbol" i18n="shared.sats">sats</span></span>)
+                <ng-container i18n="accelerator.for-an-additional-cost">For an additional</ng-container> <app-fiat [value]="cost"></app-fiat> (<span><small style="font-family: monospace;">{{ cost | number }}</small>&nbsp;<span class="symbol" i18n="shared.deweys">deweys</span></span>)
               } @else {
                 <span class="estimating">Calculating cost...</span>
               }
@@ -416,7 +416,7 @@
                   } @else {
                     <ng-container i18n="accelerator.use-accelerator-credits">Use accelerator credits for </ng-container>
                   }
-                  &nbsp;<span style="white-space: nowrap"><small style="font-family: monospace;">{{ cost | number }}</small>&nbsp;<span class="symbol" i18n="shared.sats">sats</span></span>
+                  &nbsp;<span style="white-space: nowrap"><small style="font-family: monospace;">{{ cost | number }}</small>&nbsp;<span class="symbol" i18n="shared.deweys">deweys</span></span>
                 </p>
                 <div class="d-flex justify-content-center" [class.disabled]="quoteError || accelerateError || showSuccess || calculating || processing">
                   <div class="paymentMethod mx-2 d-flex justify-content-center align-items-center" style="width: 200px; height: 55px; font-size: 30px" (click)="accelerateWithMempoolAccount()">
@@ -425,7 +425,7 @@
                   </div>
                 </div>
               } @else {
-                <p><ng-container i18n="transaction.pay|Pay button label">Pay</ng-container>&nbsp;<span><small style="font-family: monospace;">{{ ((invoice?.btcDue * 100_000_000) || cost) | number }}</small>&nbsp;<span class="symbol" i18n="shared.sats">sats</span></span> with</p>
+                <p><ng-container i18n="transaction.pay|Pay button label">Pay</ng-container>&nbsp;<span><small style="font-family: monospace;">{{ ((invoice?.btcDue * 100_000_000) || cost) | number }}</small>&nbsp;<span class="symbol" i18n="shared.deweys">deweys</span></span> with</p>
                 <div class="paymentMethod mx-2 d-flex justify-content-center align-items-center" style="width: 200px; height: 55px" (click)="moveToStep('bitcoin')">
                   <img src="/resources/bitcoin-btc-logo-full.svg" height=30>
                 </div>
@@ -488,7 +488,7 @@
               <div class="m-4 spinner-border text-light" style="width: 25px; height: 25px"></div>
             </div>
           } @else if (invoice) {
-            <p><ng-container i18n="transaction.pay|Pay button label">Pay</ng-container>&nbsp;<span><small style="font-family: monospace;">{{ ((invoice?.btcDue * 100_000_000) || cost) | number }}</small>&nbsp;<span class="symbol" i18n="shared.sats">sats</span></span></p>
+            <p><ng-container i18n="transaction.pay|Pay button label">Pay</ng-container>&nbsp;<span><small style="font-family: monospace;">{{ ((invoice?.btcDue * 100_000_000) || cost) | number }}</small>&nbsp;<span class="symbol" i18n="shared.deweys">deweys</span></span></p>
             <app-bitcoin-invoice style="width: 100%;" [invoice]="invoice" [minimal]="true" (completed)="bitcoinPaymentCompleted()"></app-bitcoin-invoice>
           } @else if (btcpayInvoiceFailed) {
             <div class="btcpay-invoice">
@@ -617,7 +617,7 @@
   <span class="d-flex justify-content-between"><ng-container *ngTemplateOutlet="accelerateTo; context: {$implicit:(userBid + estimate.txSummary.effectiveFee) / estimate.txSummary.effectiveVsize}"></ng-container> <ng-container *ngTemplateOutlet="customizeButton"></ng-container></span>
   <span class="checkout-text"><ng-container i18n="accelerator.confirmation-expected">Confirmation expected</ng-container>&nbsp;<app-time kind="within" [time]="etaInfo.acceleratedETA" [fastRender]="false" [fixedRender]="true"></app-time><br>
     @if (!calculating) {
-      <app-fiat [value]="cost"></app-fiat> (<span><small style="font-family: monospace;">{{ cost | number }}</small>&nbsp;<span class="symbol" i18n="shared.sats">sats</span></span>)
+      <app-fiat [value]="cost"></app-fiat> (<span><small style="font-family: monospace;">{{ cost | number }}</small>&nbsp;<span class="symbol" i18n="shared.deweys">deweys</span></span>)
     } @else {
       <span class="estimating" i18n="accelerator.calculating-cost">Calculating cost...</span>
     }

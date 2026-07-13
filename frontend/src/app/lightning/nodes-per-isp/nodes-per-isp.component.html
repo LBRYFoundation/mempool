@@ -1,4 +1,4 @@
-<div class="container-xl full-height" style="min-height: 335px">
+﻿<div class="container-xl full-height" style="min-height: 335px">
   <h1 i18n="lightning.nodes-for-isp">Lightning nodes on ISP: {{ isp?.name }}</h1>
 
   <div class="box">
@@ -20,7 +20,7 @@
                 <app-amount *ngIf="ispNodes.sumLiquidity > 100000000; else smallnode" [deweys]="ispNodes.sumLiquidity" [digitsInfo]="'1.2-2'" [noFiat]="false"></app-amount>
                 <ng-template #smallnode>
                   {{ ispNodes.sumLiquidity | amountShortener: 1 }}
-                  <span class="sats" i18n="shared.sats">sats</span>
+                  <span class="sats" i18n="shared.deweys">deweys</span>
                 </ng-template>
                 <span class="d-none d-md-inline-block">&nbsp;</span>
                 <span class="d-block d-md-none"></span>
@@ -76,7 +76,7 @@
             <app-amount *ngIf="node.capacity > 100000000; else smallchannel" [deweys]="node.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
             <ng-template #smallchannel>
               {{ node.capacity | amountShortener: 1 }}
-              <span class="sats" i18n="shared.sats">sats</span>
+              <span class="sats" i18n="shared.deweys">deweys</span>
             </ng-template>
           </td>
           <td class="channels text-end">

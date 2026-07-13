@@ -1,4 +1,4 @@
-
+﻿
 
 <div class="container-xl full-height" style="min-height: 335px">
   <h1 class="float-start" i18n="lightning.liquidity-ranking">Penalties</h1>
@@ -25,7 +25,7 @@
               <app-amount *ngIf="channel.capacity > 100000000; else smallnode" [deweys]="channel.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
               <ng-template #smallnode>
                 {{ channel.capacity | amountShortener: 1 }}
-                <span class="sats" i18n="shared.sats">sats</span>
+                <span class="sats" i18n="shared.deweys">deweys</span>
               </ng-template>
             </td>
             <td class="alias text-end">

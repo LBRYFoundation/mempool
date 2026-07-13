@@ -1,4 +1,4 @@
-<div class="full-container h-100">
+﻿<div class="full-container h-100">
 
   <div class="card-header">
     <div class="d-flex d-md-block align-items-baseline" style="margin-bottom: -5px">
@@ -47,7 +47,7 @@
             <app-amount *ngIf="country.capacity > 100000000; else smallchannel" [deweys]="country.capacity" [digitsInfo]="'1.2-2'" [noFiat]="true"></app-amount>
             <ng-template #smallchannel>
               {{ country.capacity ?? 0 | amountShortener: 1 }}
-              <span class="sats" i18n="shared.sats">sats</span>
+              <span class="sats" i18n="shared.deweys">deweys</span>
             </ng-template>
           </td>
         </tr>

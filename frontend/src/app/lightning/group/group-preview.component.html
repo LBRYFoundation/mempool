@@ -1,4 +1,4 @@
-<div class="box preview-box" *ngIf="nodes$ | async as nodes">
+﻿<div class="box preview-box" *ngIf="nodes$ | async as nodes">
   <app-preview-title>
     <span i18n="lightning.node-group">Lightning node group</span>
   </app-preview-title>
@@ -31,7 +31,7 @@
               <app-amount *ngIf="nodes.sumLiquidity > 100000000; else smallnode" [deweys]="nodes.sumLiquidity" [digitsInfo]="'1.2-2'" [noFiat]="false"></app-amount>
               <ng-template #smallnode>
                 {{ nodes.sumLiquidity | amountShortener: 1 }}
-                <span class="sats" i18n="shared.sats">sats</span>
+                <span class="sats" i18n="shared.deweys">deweys</span>
               </ng-template>
               <span class="d-none d-md-inline-block">&nbsp;</span>
             </td>

@@ -1,4 +1,4 @@
-<div class="widget-toggler">
+﻿<div class="widget-toggler">
   <a href="" (click)="switchMode('avg')" class="toggler-option"
     [ngClass]="{'inactive': mode === 'avg'}"><small i18n="statistics.average-small">avg</small></a>
   <span style="color: var(--transparent-fg); font-size: 8px"> | </span>
@@ -14,7 +14,7 @@
       <div class="card-text">
         <div class="fee-text" [class]="!statistics.previous ? 'no-border' : ''">
           {{ statistics.latest?.avg_capacity || 0 | number: '1.0-0' }}
-          <span i18n="shared.sats">sats</span>
+          <span i18n="shared.deweys">deweys</span>
         </div>
         <span class="fiat" *ngIf="statistics.previous">
           <app-fiat [value]="statistics.latest?.avg_capacity" digitsInfo="1.0-0" ></app-fiat>
@@ -60,7 +60,7 @@
       <div class="card-text">
         <div class="fee-text" [class]="!statistics.previous ? 'no-border' : ''">
           {{ statistics.latest?.med_capacity || 0 | number: '1.0-0' }}
-          <span i18n="shared.sats">sats</span>
+          <span i18n="shared.deweys">deweys</span>
         </div>
         <span class="fiat" *ngIf="statistics.previous">
           <app-fiat [value]="statistics.latest?.med_capacity" digitsInfo="1.0-0" ></app-fiat>

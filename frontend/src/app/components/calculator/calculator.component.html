@@ -1,4 +1,4 @@
-<div class="container-xl">
+﻿<div class="container-xl">
   <div class="text-center">
     <h2 i18n="shared.calculator">Calculator</h2>
   </div>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="input-group input-group-lg mb-1">
-          <span class="input-group-text" i18n="shared.deweys">dewey</span>
+          <span class="input-group-text" i18n="shared.deweys">deweys</span>
           <input type="text" inputmode="numeric" class="form-control" formControlName="deweys" (input)="transformInput('deweys')" (click)="selectAll($event)">
           <app-clipboard [button]="true" [text]="form.get('deweys').value" [class]="'btn btn-lg btn-secondary ms-1'"></app-clipboard>
         </div>
@@ -57,7 +57,7 @@
     <div class="row calculator-inline-row justify-content-center">
       <div class="bitcoin-satoshis-text">
         <span [innerHTML]="form.get('lbc').value | lbrycreditsdeweys"></span> 
-        <span class="sats" i18n="shared.deweys">dewey</span>
+        <span class="sats" i18n="shared.deweys">deweys</span>
       </div>
     </div>
 

@@ -60,7 +60,7 @@
           <div class="col">
             <div class="mb-0">
               <div class="input-group input-group-lg">
-                <span class="input-group-text" i18n="amount-deweys">Amount (dewey)</span>
+                <span class="input-group-text" i18n="amount-deweys">Amount (deweys)</span>
                 <input type="number" class="form-control" [class]="{invalid: invalidAmount}" formControlName="deweys" id="deweys">
                 <div class="button-group">
                   <button type="button" class="btn btn-secondary" (click)="setAmount(5000)">5k</button>
@@ -70,8 +70,8 @@
               </div>
               <div class="text-danger text-start" *ngIf="invalidAmount">
                 <div *ngIf="amount?.errors?.['required']">Amount is required</div>
-                <div *ngIf="amount?.errors?.['min']">Minimum is {{ amount?.errors?.['min'].min | number }} tSats</div>
-                <div *ngIf="amount?.errors?.['max']">Maximum is {{ amount?.errors?.['max'].max | number }} tSats</div>
+                <div *ngIf="amount?.errors?.['min']">Minimum is {{ amount?.errors?.['min'].min | number }} tDeweys</div>
+                <div *ngIf="amount?.errors?.['max']">Maximum is {{ amount?.errors?.['max'].max | number }} tDeweys</div>
               </div>
               <div class="input-group input-group-lg mt-2">
                 <span class="input-group-text" i18n="address">Address</span>

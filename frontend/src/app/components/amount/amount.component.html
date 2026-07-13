@@ -33,7 +33,7 @@
         &lrm;{{ addPlus && deweys >= 0 ? '+' : '' }}{{ deweys | amountShortener : (deweys < 1000 && deweys > -1000 ? 0 : 1) : undefined : true }}
       }
       <span class="symbol" [style]="unitStyle">
-        <ng-container *ngTemplateOutlet="prefix"></ng-container>dewey
+        <ng-container *ngTemplateOutlet="prefix"></ng-container>deweys
       </span>
     }
   </ng-template>
