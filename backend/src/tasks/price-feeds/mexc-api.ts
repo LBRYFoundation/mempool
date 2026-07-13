@@ -1,5 +1,6 @@
 import { query } from '../../utils/axios-query';
 import priceUpdater, { PriceFeed, PriceHistory } from '../price-updater';
+import logger from '../../logger';
 
 class MexcApi implements PriceFeed {
   public name: string = 'MEXC';
@@ -16,12 +17,27 @@ class MexcApi implements PriceFeed {
     if (currency !== 'USD') {
       return -1;
     }
-    const response = await query(this.url);
-    if (response && response['price']) {
-      return parseFloat(response['price']);
-    } else {
-      return -1;
+    const maxRetries = 3;
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const response = await query(this.url);
+        if (response && response['price']) {
+          const price = parseFloat(response['price']);
+          if (price > 0) {
+            return price;
+          }
+          logger.warn(`MEXC returned non-positive LBC price: ${response['price']}`);
+        } else {
+          logger.warn(`MEXC returned invalid response (attempt ${attempt}/${maxRetries}): ${JSON.stringify(response)}`);
+        }
+      } catch (e) {
+        logger.warn(`MEXC price fetch failed (attempt ${attempt}/${maxRetries}): ${e instanceof Error ? e.message : e}`);
+      }
+      if (attempt < maxRetries) {
+        await new Promise(resolve => setTimeout(resolve, attempt * 2000));
+      }
     }
+    return -1;
   }
 
   /** @asyncUnsafe */
