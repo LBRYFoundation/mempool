@@ -1600,7 +1600,7 @@ class DatabaseMigration {
       ADD segwit_total_txs int unsigned NOT NULL,
       ADD segwit_total_size int unsigned NOT NULL,
       ADD segwit_total_weight int unsigned NOT NULL,
-      ADD header varchar(160) NOT NULL,
+      ADD header varchar(224) NOT NULL,
       ADD utxoset_change int NOT NULL,
       ADD utxoset_size int unsigned NULL,
       ADD total_input_amt bigint unsigned NULL
